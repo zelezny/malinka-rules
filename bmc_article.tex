@@ -1,0 +1,974 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.html and the instructions for   %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass{bmcart}
+
+%%% Load packages
+%\usepackage{amsthm,amsmath}
+%\RequirePackage{natbib}
+%\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
+%\RequirePackage{hyperref}
+\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+\usepackage[linesnumbered,lined,boxed,commentsnumbered, ruled]{algorithm2e}
+\usepackage{bbm}
+\usepackage{multirow}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{soul} %Strikethrough text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\includegraphic{}
+\def\includegraphics{}
+
+
+
+%%% Put your definitions there:
+\startlocaldefs
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+\endlocaldefs
+
+% \thickhline command for thick horizontal lines that span the table
+%\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+%\hline
+%\noalign{\global\arrayrulewidth\savedwidth}}
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Finding semantic patterns in omics data using concept rule learning with an ontology-based refinement operator}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   addressref={aff1,aff2},                   % id's of addresses, e.g. {aff1,aff2}
+   corref={aff1,aff2},                       % id of corresponding address, if any
+   %noteref={n1},                        % id's of article notes, if any
+   email={malinfr1@fel.cvut.cz}   % email address
+]{\inits{FM}\fnm{František} \snm{Malinka}}
+\author[
+   addressref={aff1},
+   email={zelezny@fel.cvut.cz}
+]{\inits{FZ}\fnm{Filip} \snm{Železný}}
+\author[
+   addressref={aff1},
+   email={klema@fel.cvut.cz}
+]{\inits{JK}\fnm{Jiří} \snm{Kléma}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%% Repeat \address commands as much as      %%
+%% required.                                %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\address[id=aff1]{%                           % unique id
+  \orgname{Department of Computer Science, Czech Technical University in Prague}, % university, etc
+  \street{Karlovo náměstí 13},                     %
+  \postcode{121 35},                                % post or zip code
+  \city{Prague},                              % city
+  \cny{Czech Republic}                                    % country
+}
+\address[id=aff2]{%
+  \orgname{Czech Centre for Phenogenomics, Institute of Molecular Genetics of the Czech Academy of Sciences},
+  %\street{D\"{u}sternbrooker Weg 20},
+  %\postcode{24105},
+  \city{Prague},
+  \cny{Czech Republic}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{artnotes}
+%\note{Sample of title note}     % note to the article
+%\note[id=n1]{Equal contributor} % note, connected to author
+\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{abstractbox}
+\begin{abstract} % abstract
+\parttitle{Background}
+Identification of non-trivial and meaningful patterns in omics data is one of the most important biological tasks. The patterns help to better understand  biological systems and interpret the experimental outcomes. To illustrate, a well-established method serving to explain the biological data is Gene Set Enrichment Analysis. However, this tool is restricted to a very specific type of evaluation. A sorted list of genes must be provided and is annotated with the set of terms enriched in the gene list. Here, in contrary to enrichment analysis, we introduce a new tool/framework that allows for the induction of more complex patterns \textcolor{red}{of 2-dimensional binary omics data. This extension allows to discover and describe semantically coherent biclusters.}\st{, which extends its applicability on various types of omics data}.
+
+\parttitle{Results}
+We present a new rapid method called sem1R that reveals interpretable hidden rules in omics data. These rules capture semantic differences between two classes: a target class as a collection of positive examples and a non-target class containing negative examples. The method is inspired by CN2 rule learner and introduces a new refinement operator that exploits prior knowledge in the form of ontologies. In our work this knowledge serves to create  accurate and interpretable rules. The novel refinement operator uses two reduction procedures: Redundant Generalization and Redundant Non-potential, both of which help to dramatically prune the rule space and consequently, speed-up the entire process of rule induction in comparison with the traditional refinement operator as is presented in CN2.
+\parttitle{Conclusions}
+Efficiency and effectivity of the novel refinement operator were tested on three real different gene expression datasets. Concretely, the Dresden Ovary Dataset, DISC, and m2816 were employed. The experiments show that the ontology-based refinement operator speeds-up the pattern induction drastically. The algorithm is written in C++ and is published as an R package available at http://github.com/fmalinka/sem1r.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{symbolic machine learning}
+\kwd{enrichment analysis}
+\kwd{ontology}
+\kwd{taxonomy}
+\kwd{gene expression}
+\kwd{biclustering}
+\end{keyword}
+
+% MSC classifications codes, if any
+%\begin{keyword}[class=AMS]
+%\kwd[Primary ]{}
+%\kwd{}
+%\kwd[; secondary ]{}
+%\end{keyword}
+
+\end{abstractbox}
+%
+%\end{fmbox}% uncomment this for twcolumn layout
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Main Body begins here                %%
+%%                                          %%
+%% Please refer to the instructions for     %%
+%% authors on:                              %%
+%% http://www.biomedcentral.com/info/authors%%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%% See the Results and Discussion section   %%
+%% for details on how to create sub-sections%%
+%%                                          %%
+%% use \cite{...} to cite references        %%
+%%  \cite{koon} and                         %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
+%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
+% <put your article body there>
+
+%%%%%%%%%%%%%%%%
+%% Background %%
+%%
+
+\section*{Background}
+Nowadays, omics data analysis that integrates semantics in the form of external prior knowledge with raw measurements is becoming more and more popular in computational biology \cite{stevens2000ontology,osterlund2017integrative,rajasundaram2016more}. A typical example of integrative gene expression data analysis may deliver a direct link between a phenotype and existing annotation terms at different levels of generality. The integration helps scientists to interpret gene expression data easier because it can reveal gene sets that share common biological properties. Semantic data are stored in databases, oftentimes in an ontology format. In this area, an important role is played by The Open Biological and Biomedical Ontology (OBO) Foundry \cite{smith2007obo}, which provides validation and assessment of ontologies to ensure their interoperability. Dozens of ontologies from various biological domains can be downloaded from \emph{http://www.obofoundry.org/}. One of the most popular methods that uses this type of semantics utilizing a connection between ontologies or gene set databases and genes is \emph{enrichment analysis}, \emph{Gene Set Enrichment Analysis} (GSEA) \cite{subramanian2005gene} represents one of its most frequently used implementations. The enrichment analysis identifies a list of significantly enriched ontological terms \st{that are associated with the given set of differentially expressed genes} \textcolor{red}{from provided list of differentially expressed genes that is sorted according by some ranking metric (p-value, log fold change, etc.)}. To discover a certain molecular function or biological process that is shared over the set of differentially expressed genes, Gene Ontology \cite{ashburner2000gene,gene2016expansion} is an appropriate and often used annotation database. In addition, finding enriched biological pathways in gene expression data can be done similarly \cite{curtis2005pathways}, in particular \emph{KEGG}  \cite{kanehisa2016kegg,kanehisa2015kegg,kanehisa2000kegg} and \emph{Reactome} \cite{croft2013reactome} databases are frequently employed in pathway analysis.
+
+An example of GSEA outcome that is induced from data over the KEGG database can be the following: 
+
+\begin{center}
+    $\mathbbm{H}= \{$\emph{KEGG\_WNT\_SIGNALING\_PATHWAY},\\ \emph{KEGG\_VEGF\_SIGNALING\_PATHWAY},\\ \emph{KEGG\_CELL\_CYCLE}$\}$.
+\end{center}
+
+In our view, this GSEA outcome corresponds to a hypothesis that can be seen as a collection of three simple rules where each rule has length one and says, independent of the other rules, that the corresponding term in the rule is significantly enriched in the reported set of genes against a background/control gene set. Unfortunately, GSEA in particular, and enrichment analysis in general, cannot produce more complex hypotheses. For example, the hypothesis above does not say that \emph{KEGG\_WNT\_SIGNALING\_PATHWAY} and \emph{KEGG\_CELL\_CYCLE} are enriched simultaneously, in conjunction. The form of hypothesis only says that these terms are enriched individually.
+%The reason for that is the fact that a gene set associated with the both terms can be different.
+On the other hand, let $R$ be the following rule:
+\begin{center}
+\emph{KEGG\_WNT\_SIGNALING\_PATHWAY} $\wedge$ \emph{KEGG\_CELL\_CYCLE}.    
+\end{center}
+$R$ says that simultaneous occurrence of the terms  \emph{KEGG\_WNT\_SIGNALING\_PATHWAY} and \emph{KEGG\_CELL\_CYCLE} in the annotation of a gene (frequently) leads to its upregulation. The upregulation score for the rule $R$ is computed from a gene set where each gene has to be associated with both terms simultaneously. In our framework, and unlike the traditional enrichment analysis, we will be able to cope with these conjunctive rules.
+
+Moreover, the dimension of biological samples/conditions is disregarded in the enrichment analysis, only the dimension of genes is taken into consideration when constructing annotations. The enrichment analysis supposes a gene set of interest (e.g. genes that are differentially expressed) to be a part of the input. Consequently, these methods can only be applied in such biological experiments, where samples are split into two groups, treatments and controls. However, the treatment and control labels are often not available. In most cases, the split into groups is unclear, the sample groups may overlap or form complex taxonomies. Under these conditions, any set of differentially expressed genes cannot easily be determined. For this reason, we suppose that samples are described with a rich ontology of annotation terms (locations, conditions, complex treatments, etc.) and bring an opportunity to further generalize the rules with extra terms from this ontology that can be added into the rules. This allows for inducing a rule that self-defines the semantically coherent joint groups of genes and samples; the genes tend to be upregulated in the sample group. The induction is fully automated and driven by the context provided in the measurements and annotation ontologies. In other words, GSEA uses a 1-dimensional space of deregulated genes to induce a list of significantly enriched annotation terms. In this work, we expand onto 2-dimensional expression space and consequently allow for generation of hypotheses that represent a set of genes upregulated in a specific set of samples/biological conditions. An example of the hypothesis could be the following rule:
+\begin{center}
+$\mathbbm{H}= \{$ \emph{KEGG\_WNT\_SIGNALING\_PATHWAY} $\wedge$ \emph{KEGG\_CELL\_CYCLE}  $\wedge$ \emph{WING\_VEIN\_SEGMENT} $\}$.
+\end{center}
+This hypothetical example shows the case where genes belonging to \emph{KEGG\_WNT\_SIGNALING} and \emph{KEGG\_CELL\_CYCLE} pathways are frequently upregulated in samples from \emph{WING\_VEIN\_SEGMENT}, which makes a specific body part of Drosophila melanogaster. 
+
+We use rule learning to construct the above-outlined hypotheses. Rule learning refers to a class of supervised machine learning methods that induce a set of classification rules from a given set of training examples \cite{kotsiantis2007supervised}. For a binary task, training examples are assigned to two disjoint sets of positive and negative examples. The rule is an if-then statement where the antecedent is in the form of a conjunction of positive or negative logical terms, and the consequent is a class label. The final decision regarding an unseen example is provided by a set of rules or their ordered list. The rules are widely used in the fields of medicine and biology for their easy and clear interpretation \cite{hvidsten2003learning,calzone2006machine,bellazzi2008predictive} contrary to neural networks, for instance. 
+
+As previously mentioned, one of the things that can help scientists interpret their data in a more natural way is background knowledge.
+Bioinformatics frequently deals with Gene Ontology  \cite{ashburner2000gene,gene2016expansion} and there are other types of structured databases, such as KEGG \cite{kanehisa2016kegg,kanehisa2015kegg,kanehisa2000kegg}, which can also be interpreted as an ontology or a taxonomy. Medicine employs Disease Ontology \cite{schriml2011disease,kibbe2014disease} or SNOMED-CT, natural language processing makes use of WordNet \cite{miller1995wordnet} or YAGO \cite{suchanek2007yago}, dedicated ontologies are often encountered in industry too.  
+
+In our work, these two concepts, rule learning and ontologies or taxonomies, are combined. We observed that the ontologies reasonably increase accuracy and robustness of induced rules. However, they also reasonably raise the number of logical terms available for rule construction, which consequently leads to prohibitive growth of hypothesis space and inefficiency of rule learning. This inefficiency can reasonably be reduced with consistent utilization of the known hierarchical relationships between the ontology terms that cannot be handled with the traditional rule learning methods \cite{clark1989cn2,cohen1995fast}. In this paper, we will focus on the binary task (positive and negative examples, two classes only) and multiple rule models (the output of the learning algorithm is multiple rules).
+
+The main motivation for this paper was our work published in \cite{klema2017semantic}, in which we introduced a technique called \emph{semantic biclustering}. This type of biclustering infers a human easily readable form of hypothesis describing only a single target class (also known as the target concept). This technique is applied to a gene expression data where highly expressed genes in corresponding samples are considered as the target class. One of the proposed methods solves the problem of semantic biclustering by linearizing a two-dimensional binary data matrix and a set of ontologies to an attribute-value representation that can be figured out using one of the well-known rule learning algorithms such as CN2 \cite{clark1989cn2,clark1991rule}, RIPPER \cite{cohen1995fast}, or PRIM \cite{friedman1999bump}. However, current ontologies, such as Gene Ontology, contain tens of thousands of hierarchically ordered terms. As a result, building a classification model without a preprocessing step is time and memory consuming. For this reason, we introduce a new refinement operator for a rule learning algorithm that examines properties between given data, ontologies, and its mutual relations to speed-up and improve the process of learning.
+
+One of the related subfields of machine learning that can handle a large amount of prior knowledge (i.e. ontology or taxonomy) is Inductive Logic Programming (ILP) where a key challenge is to prune a search space. This is caused by the fact that hypotheses are formulated in first-order logic and ILP algorithms have to search over a large hypothesis space. For its ability to work with this form of prior knowledge, we were inspired by this subfield. In \cite{vzakova2007exploiting}, the authors proposed a refinement operator to construct conjunctive relational features that use taxonomies to speed-up the process of propositionalization. This algorithm uses taxonomies to exclude conjunction from the exploration process if the conjunction contains a feature together with any of its subsumees. In \cite{svatovs2017pruning}, the authors find and prune such hypotheses that are equivalent to a previously considered hypothesis. To test such equivalency in given domain theory, they proposed a saturation method for a first-order logic clause with the property that two clauses are equivalent whenever their saturations are isomorphic. However, ILP can build a highly complex hypothesis whose interpretation can prove difficult, especially in a biological domain where validation of such a hypothesis can hardly be feasible. For this reason, we decided to focus on the easily interpretable hypotheses produced by rule learning algorithms.
+
+In this work, we propose a new rule learning algorithm that builds classifiers, as is usual for rule learning, from given positive and negative examples. To build such a classifier, we were inspired by the well-known CN2 algorithm that is based on the Beam search heuristic \cite{clark1989cn2}. A refinement operator of CN2, that is used for a rule space exploration, extends the current rule by trial adding all features from a set of features to the antecedent of the rule. For example, with a set of four features $\{t1, t2, t3, t4\}$, the current rule $t1 \wedge t2 \rightarrow yes$ (all the examples with positive values of features $t1$ and $t2$ belong to the positive class) could be extended to two rules $t1 \wedge t2 \wedge t3 \rightarrow yes$ and $t1 \wedge t2 \wedge t4 \rightarrow yes$\footnote{As we deal with the binary class we will skip the right hand side of the rules in the rest of text and implicitly assume that all the rules target the positive class.}. In particular, we introduce a new refinement operator that, due to ontologies, significantly reduces a search space of rules and consequently reduces run time of rule learner in comparison to the traditional refinement operator without a loss of accuracy. In our example, if knowing that $t4$ is more general than $t1$, the second rule extension can be rejected for redundancy without testing. The proposed ontology-based refinement operator uses two reduction procedures: a \emph{Redundant Generalization} that omits candidate rules based on a relation generalization-specialization and a \emph{Redundant Non-potential} that omits the candidate rules which cannot improve classification accuracy. We demonstrate effectiveness and efficiency of our algorithm on three real gene expression datasets: \emph{Dresden ovary table} (DOT) \cite{jambor2015systematic,dot}, \emph{Drosophila imaginal discs} (DISC) \cite{borovec2016binary}, and dataset of \emph{Strand-specific RNA-seq of nine mouse tissues} (m2801) \cite{merkin2012evolutionary}.
+
+
+\section*{Methods}
+\subsection*{Problem definition}\label{section:problemdef}
+To start with, we formally define two basic concepts: ontology and example as inputs of the proposed algorithm. 
+
+Firstly, assume ontologies as a partial-ordered set $<T,\succeq>$, where $T$ represents a set of all terms that are presented in the given ontologies and $\succeq$ is a binary relation defined in $T$ such that  $(g, s) \in \succeq \subseteq T \times T$. In other words, term $g$ is $\succeq$-related to term $s$. For example, in the context of Gene ontology \cite{ashburner2000gene,gene2016expansion}, we can say that the term \emph{developmental process} is a subtype of term \emph{biological process}, written as (\emph{biological process}, \emph{developmental process}) $\in \succeq$. According to partial-order set definition, the $\succeq$ relation is reflexive, transitive, and antisymmetric. Consequently, ontologies cannot contain any cycles. For a better understanding, we define the following concepts that will be used in this paper later. 
+
+\begin{definition}
+Let $x,y \in T$, $x$ is called a \emph{generalization} of $y$ (or $x$ is more general than $y$) iff $x \succeq y$.
+\end{definition}
+
+\begin{definition}
+ Let $x,y \in T$, $y$ is called a \emph{specialization} of $x$ (or $y$ is more specific than $x$) iff $x \succeq y$.
+\end{definition}
+
+Given these two definitions, we are able to express basic elements defined over ontologies. As an example, we can define all top elements in ontologies. In the context of ontology, top elements correspond to roots, i.e. the terms that do not have any ancestors/more general terms.
+
+
+\begin{example}\label{ex:onto}
+    Let ontology $O = <T,\succeq^{*}>$ be a partial-ordered set that is shown in Fig~\ref{figure:onto1} where $T=\{t0,t1,t2,t3,t4,t5,t6\}$, $\succeq=\{(t0,t1), (t0,t2), (t0,t3), (t1,t4), (t2,t4),$ $(t2,t5), (t3,t5), (t3,t6)\}$, and $\succeq^{*}$ is a reflexive transitive closure of the relation $\succeq$. Then $t0$ is more general than $t1,t2,t3,t4,t5$ and $t6$ and simultaneously $t0$ is a root since there is no other more general term of $t0$.
+    %Then $t1$ is an upward cover of $t4$; $t0$, $t2$, and $t3$ are upper bounds of $\{t5,t6\}$ and $t3$ is the least upper bound of $\{t5,t6\}$.
+\end{example}
+
+%fig1
+
+Secondly, every ontology refers to a certain set of ground level objects. In this work we will call them examples. In the case of gene ontology, the examples could be the set of measured genes, in the case of location ontology it can be the set of body parts from which the measurements come. We define a set of examples $E = E^{+} \cup E^{-}$ where $E^{+}$ represents a set of positive examples (e.g. a set of up-regulated genes or a gene set of interest) and $E^{-}$ represents a set of negative examples (e.g. a set of down-regulated genes or a control gene set). 
+Finally, we define an association between examples and ontology terms and vice versa. These associations are essential for the novel refinement operator and for the two reduction procedures. 
+
+
+Since each example is annotated by a subset of terms from an ontology, we assume a mapping
+\begin{eqnarray}
+\label{eq:mapM}
+	 M :  E \rightarrow \mathcal{P}(T)
+\end{eqnarray}
+
+that maps examples from the set of examples $E$ to elements of the power set of terms $T$ from a given ontology. To illustrate, an example is represented by the Drosophila's gene \emph{Phosphoenolpyruvate carboxykinase} that is annotated by the following Gene ontology terms: \emph{GTP binding}, \emph{phosphoenolpyruvate carboxykinase activity}, \emph{gluconeogenesis}, and \emph{mitochondrion}. In most cases, this mapping function $M$ is defined manually by a user based on their expert knowledge, or automatically by well-known tools that help map a text associated with an example to an ontology as \cite{zooma}.
+
+
+On the other hand, there are associations from terms to examples. For this, we define a reverse mapping
+\begin{eqnarray}
+\label{eq:mapMr}
+	 M' : T \rightarrow \mathcal{P}(E)
+\end{eqnarray}
+
+that maps elements from the set of terms $T$ to elements of the power set of examples $E$. The formal definition of this function follows: 
+
+\begin{eqnarray}
+\label{eq:mapMline}
+	 M' (t \in T) = \{\forall e \in E : t \subseteq M(e)\}.
+\end{eqnarray}
+
+\begin{example} \label{ex:2}
+    Suppose the ontology as a partial-order set that is defined in Example \ref{ex:onto}. Let $E = \{e_1, e_2, e_3\}$ be a set of examples, and the mapping $M$, that assigns terms from the ontology $O$ to the specific example, is defined manually in the following way: $M(e_1) = \{t4\}, M(e_2) = \{t5, t6\}, M(e_3) = \{t2\}$.
+    The mapping $M'$ that reversely assigns set of examples to the specific term from the ontology $O$ is following: $M'(t0) = \{\emptyset\}, M'(t1) = \{\emptyset\}, M'(t2) = \{e_3\}, M'(t3) = \{\emptyset\}, M'(t4) = \{e_1\}, M'(t5) = \{e_2\}, M'(t6) = \{e_2\}$.
+\end{example}
+
+Since the associations between examples and terms have been defined, we may propagate these associations to the more general terms. It holds that if an example associates with a term then by default it associates with all generalizations of this term as well. The propagation is shown in Fig \ref{figure:onto2} and it is concurrently defined in Eq \ref{eq:mapS}. The process of spreading information in ontologies is represented by a mapping $S$ where for each term we firstly find a corresponding set of all its specializations, and then we unite all examples associated with them.
+
+%fig2
+
+ $$S :  T \rightarrow \mathcal{P}(E)$$
+\begin{eqnarray}
+\label{eq:mapS}
+	 S(t_{r} \in T) = \bigcup\limits_{t \in \{\forall x \in T: x \textup{ \footnotesize is specialization of } t_{r}\}}^{} M'(t)
+\end{eqnarray}
+
+\begin{example}\label{ex:3}
+    Consider the ontology $O$ from Example \ref{ex:onto}, $M$ and $M'$ from Example \ref{ex:2}. We apply $S$ to each term in $O$, i.e.
+    $$S(t4) = M'(t4) = \{e1\}$$
+    $$S(t5) = M'(t5) = \{e2\}$$
+    $$S(t6) = M'(t6) = \{e2\}$$
+    $$S(t1) = M'(t1) \cup M'(t4) = \{e1\}$$
+    $$S(t2) = M'(t2) \cup M'(t4) \cup M'(t5) = \{e1, e2, e3\}$$
+    $$S(t3) = M'(t3) \cup M'(t5) \cup M'(t6) = \{e2\}$$
+    $$S(t0) = M'(t0) \cup M'(t1) \cup \cdots \cup M'(t6) = \{e1, e2, e3\}$$
+    
+\end{example}
+The result of this operation is shown in Fig \ref{figure:onto2}. In this example, the most general term $t0$ named as \emph{biological process} is associated with all examples in $E$, i.e. $e1$, $e2$, and $e3$. Intuitively, this is an expected result since other terms (\emph{cellular process}, \emph{single-organism process}, \emph{developmental process}, \emph{single-organism cellular process}, \emph{single-organism developmental process}, and \emph{anatomical structure development}) are also a \emph{biological process} thanks to the $\succeq^{*}$-relation. In other words, the most general term is associated with all examples that are associated with all specializations of that term.
+
+
+Before we introduce a rule space and a corresponding form of rules, we formulate a cover operator $\Theta$. The cover operator determines which examples satisfy a rule condition, and we say that the rule covers such examples. Formally, $\Theta$ is a mapping from a power set of terms $T$ to a power set of examples $E$, i.e.
+
+\begin{eqnarray}
+\label{eq:thetamap}
+	 \Theta : \mathcal{P}(T) \rightarrow \mathcal{P}(E)
+\end{eqnarray}
+ %$$\Theta : \mathcal{P}(T) \rightarrow \mathcal{P}(E)$$
+ and is defined in the following form:
+\begin{eqnarray} \label{eq:cover}
+    \Theta (T_{r} \subseteq T) = \bigcap\limits_{t \in T_{r}} S(t) .
+\end{eqnarray}
+ 
+
+The cover operator $\Theta$ takes a set of terms and returns all the examples concurrently annotated by all the terms from this set. The cover is applied after the annotation propagation step mentioned above.
+
+
+Rule space $\mathcal{R} = <R, \succeq_{r}>$ is defined as a quasi-ordered set where $R$ represents a set of rules and a binary relation $\succeq_{r}$ such that $\succeq_{r} \subseteq R \times R$ is reflexive and transitive. Further, the rule syntax is restricted on a conjunction of positive terms. For the sake of simplicity, we omit a propositional logic notation of rules and represent the conjunction of positive terms as a set of terms, i.e. propositional logic notation of rule $t1 \wedge t3 \wedge t4$ is represented as $\{t1,t3,t4\}$. Notice that conjunctive interpretation corresponds to the definition of cover operator as well.
+ 
+\begin{example} \label{ex:4}
+    Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, and mapping $S$ from Example \ref{ex:3}. Let rules be $R1=\{t1, t2\}$, $R2=\{t2\}$, and $R3=\{t0\}$. Then $R1$ covers $\Theta(R1) = S(t1) \cap S(t2) = \{e1\} \cap \{e1, e2, e3\} = \{e1\}$. We say that example $e1$ is covered by rule $R1$. Equivalently, $R2$ covers examples $e1, e2, e3$ and $R3$ covers the same set of examples as $R2$.
+\end{example}
+ 
+ 
+ The binary relation $\succeq_{r}$ is defined in the set of rules $R$ as follows:
+ 
+\begin{eqnarray} \label{eq:forder}
+    R_{f}1 \succeq_{r}  R_{f}2 \iff  \Theta(R_{f}2) \subseteq \Theta(R_{f}1)
+\end{eqnarray}
+where  $R_{f}1, R_{f}2 \in R$.
+
+\begin{example} \label{ex:5}
+Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, mapping $S$ from Example \ref{ex:3}, and rules from Example \ref{ex:4}. Then the relations between rules are as follows: $R2 \succeq_{r} R1$, $R3 \succeq_{r} R1$, $R3 \succeq_{r} R2$ and $R2 \succeq_{r} R3$. 
+\end{example}
+
+\subsection*{Proposed algorithm} \label{section:proposedalg}
+
+The algorithm proposed in this work induces a hypothesis from data in the form of a set of rules (conjunctions). To induce a hypothesis consisting of more rules we apply a covering algorithm that has its origin in the AQ family of algorithms \cite{michalski1969quasi} and it is also used in CN2. The covering algorithm consists of two steps: (1) induce a single rule from the current set of examples, (2) exclude the examples that are covered by this single rule from the current set of examples; these two steps are iteratively applied starting with the the set of all examples until all positive examples are covered or a certain number of induced rules is reached. This process is described in Algorithm \ref{algo_sem1r} and that algorithm we refer to as \emph{sem1R}. As an input, the following data are required: a set of positive $E^{+}$ and negative $E^{-}$ examples, a set of ontologies $\mathcal{O}$, and a maximal size of the set of induced rules $k$. An output is a set of induced rules. An \emph{induceSingleRule} function returns the best rule based on selected evaluation function. The function \emph{induceSingleRule} is described in Algorithm \ref{algo_newrefinement}, all evaluation functions can be found in the Evaluation Criteria section.
+
+Contrary to CN2, the \emph{sem1R} algorithm has the relations over terms that are explicitly specified in provided ontologies. Intuitively, if this kind of knowledge were exploited then we would expect some benefits during the process of inducing rules because the structure of terms is known. In this case, the main benefit is speeding up the process of inducing rules and removing obvious redundancy between the terms in rules. This was the main motivation for the following reduction procedures.
+
+
+\begin{algorithm}[!t]
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{induceSingleRule}{induceSingleRule}
+\SetKwFunction{removeCoveredExamples}{removeCoveredExamples}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{$E^{+}$, $E^{-}$,$\mathcal{O}$, $k$}
+\Output{$\mathbbm{H}$ \tcp*[h]{hypothesis}}
+\BlankLine
+$\mathbbm{H} \leftarrow \emptyset$\\
+\ForEach{$i \in \{1,2,\cdots, k\}$}
+{
+    $newRule \leftarrow$ \induceSingleRule{$E^{+}$, $E^{-}$, $\mathcal{O}$, $k$}\\
+    $E^{+}$, $E^{-} \leftarrow$ \removeCoveredExamples{$newRule$, $E^{+}$, $E^{-}$}\\
+	$\mathbbm{H} \leftarrow \mathbbm{H} \cup newRule$\\
+}
+\Return{$\mathbbm{H}$}
+\caption{sem1R}\label{algo_sem1r}
+\end{algorithm}
+
+
+
+\subsubsection*{Reduction Procedures}\label{sec:reduction_procedures}
+In this section, we formulate two procedures that significantly reduce a rule space in comparison with the traditional rule learning methods such as CN2.
+
+\subsubsection*{Redundant Generalization}
+This reduction method eliminates such terms occurring in a rule which are more general than any other term of the rule. Such terms in the rule do not affect a set of examples covered by the rule and consequently do not change its impact. Evidently, the set of covered examples is only affected by the most stringent sets of examples according to the mapping $S$.
+\begin{theorem}
+Let $R1$ be a rule and suppose that term $t1 \in R1$ and a term $t2 \in R1$ where $t1$ is more general than $t2$. Then, the rule $R1$ covers an equal set of examples as a rule $\overline{R1} = R1 \backslash \{t1\}$ that does not contain $t1$: 
+
+$$\Theta(\overline{R1}) = \Theta(R1)$$
+and the rule $R1$ is called a \textit{redundant generalization} of $\overline{R1}$.
+\end{theorem}
+
+\begin{proof}
+
+For simplicity, we take into consideration only rules with cardinality 1. Given this, mapping $S$ can be seen as a cover operator $\Theta$ because it only makes an intersection over all sets of examples according to $S$. Also, a rule of cardinality 1 will be denoted as a term because we do not want to distinguish the relations over the set of terms and the set of rules. In this case, the $\succeq$ relation over terms is equivalent to $\succeq_{r}$ relation over rules. This simplification does not lose generality.
+
+In Eq \ref{eq:mapS}, we use the mapping $S$ that finds all specializations for a term and afterwards, using mapping M', it unites all the examples assigned to these specializations into one set. This is done for each term in an ontology. Apparently, terms that are more specific cannot be associated with a higher number of examples than their more general counterparts. Concurrently, examples associated with a more specific term make a subset of examples associated with a more general term, written as $t1 \succeq t2 \Rightarrow S(t2) \subseteq S(t1)$ where $t1,t2 \in T$.
+Now, let rule $R1=\{t1,t2\}$ consist of two terms such that $t1 \succeq t2$ and rule $\overline{R1} = \{t2\}$ consists of only term $t2$. Then $R1$ covers an equal set of examples as $\overline{R1}$. This equality is proven below.
+
+$$ \Theta(R1) = \Theta(\overline{R1})$$
+$$S(t1) \cap S(t2) = S(t2)$$
+$$\{e \in E: S(t2) \subseteq S(t1)\} = S(t2)$$
+$$S(t2) = S(t2).$$
+\end{proof}
+
+\begin{example} \label{ex:6}
+Consider the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, and mapping $S$ from Example \ref{ex:3}. Let rule $R1=\{t0,t2\}$, term $t0$ is more general than $t2$ ($t0 \succeq t2$) and this rule covers examples $e1, e2, e3$ because $\Theta(R1) = \Theta(\{t0,t2\}) = S(t0) \cap S(t2) = \{e1, e2, e3\}$. Now, consider a rule $\overline{R1} = \{t2\}$ that also covers examples $e1,e2,e3$ since $\Theta(\overline{R1}) = S(t2) = \{e1, e2, e3\}$ and as we can see, term $t0$ occurring in the rule $R1$ does not influence a set of covered examples. Given this, rule $R1$ covers the same set of examples as rule $\overline{R1}$. For this reason, rule $R1$ is Redundant Generalization and rule $\overline{R1}$ is not Redundant Generalization.
+\end{example}
+
+
+To achieve a non-Redundant Generalization rule, i.e. the rule where the relation $\succeq$ does not exist between any terms in the rule, we have to apply Redundant Generalization procedure until the relation $\succeq$  between terms in the rule has not been found.
+As we can see in Example \ref{ex:6}, this reduction procedure decreases the cardinality (length) of the rules. 
+
+
+\subsubsection*{Redundant Non-potential}
+In the previous case, the Redundant Generalization method reduces a rule space as a result of its ability to decrease the cardinality of rules. Specifically, this reduction capability is applied to the refinement operator that gradually extends rules by adding new terms into them. Redundant Non-potential method can generate fewer candidate rules because terms that are in a relation with another term are not appended to the refined rule.
+
+
+Contrary to the previous method, the Redundant Non-potential method does not utilize relations among terms to reduce a rule space but compares rules with each other and removes such rules that cannot reach a higher quality value than the current best rule has. The ability to recognize non-potential rules can be used for a direct reduction of rules in a rule space and also for eliminating a number of candidate rules in a process of rules refining. Firstly, we define two types of evaluation function: $Q$ evaluating a quality of rule based on the number of covered/uncovered examples, and $Q_p$ that evaluates a potentially maximum quality of rule that could possibly be achieved over its future refinements. Examples of $Q$ functions are depicted in Eq \ref{eq:eval_acc}, \ref{eq:eval_f1}, and \ref{eq:auc_r}. Corresponding $Q_p$ functions are depicted in Eq \ref{eq:eval_pot_acc}, \ref{eq:eval_pot_f1}, and \ref{eq:auc_p_r}. For the moment, we can say that $Q_p$ function expresses an upper boundary of a rule quality. This upper bound can be reached when we know that rule refinements can only reduce the set of examples the rule covers. Then, the best potential refinement does not lose any positive examples from the current cover while ceasing to cover all the current negative examples.
+A Redundant Non-potential rule and all its more specific rules can be safely disregarded in the single rule induction process because there is a guarantee that these rules cannot exceed an upper boundary of the rule quality represented by $Q_p$.
+
+
+To illustrate, consider an arbitrary rule $R1$ and its more specific rule $R2$ ($R1 \succeq_{r} R2$) which was created by refinement operator application. Given Eq \ref{eq:forder}, $R2$ covers a subset of examples covered by $R1$ ($\Theta(R2) \subseteq \Theta(R1)$). Unfortunately, ACC or F1-score are not monotone functions, meaning that it is not guaranteed that $R2$ must always have a higher ACC or F1-score than $R1$. For this reason, $R2$ cannot be safely pruned from a rule space because it is not obvious whether other refinements of $R2$, which are more specific than $R2$, can potentially achieve a higher score than $R1$ even though $R2$ could have a worse score than $R1$. To prune the rule space safely, we maintain the upper bound of rule quality $Q_p$. Given this, if rule $R2$ (refinement of $R1$) has a lower $Q_p$ value than $R1$'s value of $Q$ then $R2$ is a \emph{Redundant Non-potential} and this rule, along with all its more specific extensions/refinements, can be safely pruned from a rule space.
+
+
+\begin{theorem}
+    Let $\mathcal{R} = <R, \succeq_{r}>$ be a quasi-ordered set representing a rule space, where $R = \{R1, R2, R_{best}\}$. Binary relation $\succeq_{r}$ is defined on $R1$ and $R2$ as $\succeq_{r} = \{(R1, R2)\}$ meaning that $R2$ is more specific than $R1$; relation of $R_{best}$ is disregarded - may be arbitrary. If potential quality ($Q_p$) of the rule $R1$ is smaller than the quality $Q$ of rule $R_{best}$ then the rule $R1$ and all its potential more specific rules, i.e. $R2$, can be pruned from the set of rules $R$ thus from the rule space $\mathcal{R}$. Then the rules $R1$ and $R2$ are called \textit{Redundant Non-potentials}.
+\end{theorem}
+
+\begin{proof}
+   First of all, suppose that a target class is represented by positive examples. Secondly, suppose an evaluation function whose highest value is returned when all positive examples and none of the negative examples are covered. An example of this function can be ACC or F1-score. Note, that ACC is given by equation $TP+TN/(TP+TN+FP+FN)$ (see the Evaluation Criteria section) and the reason, why we affect only $TP$ and not $TN$, is simple. An example that is classified as $TP$ has to be covered by a rule. On the other hand, an example classified as $TN$ does not have to be covered by a rule. Since we focus on the target class, an arbitrary rule reaches a higher score if a new rule covers the same set of positive examples as a rule and does not cover any other negative example.
+\end{proof}
+
+
+\begin{example}\label{ex:non_pot}
+Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, mapping $S$ from Example \ref{ex:3}, and two rules $R1=\{t2\}$ and $R2=\{t3\}$. Further, we define a set of positive examples $E^{+}=\{e1, e3\}$ and a set of negative examples $E^{-}=\{e2\}$. Firstly, we evaluate the quality of the rules according to ACC measure (see Eq \ref{eq:eval_acc})
+\begin{eqnarray}
+\label{eq:exampleacc}
+	{\small Q_{ACC}(R1) = \frac{TP + TN}{TP + TN + FP + FN} = \frac{2 + 0}{2 + 0 + 1 + 0} = \frac{2}{3}} \\
+Q_{ACC}(R2) = \frac{TP + TN}{TP + TN + FP + FN} = \frac{0 + 0}{0 + 0 + 1 + 2} = 0
+\end{eqnarray}
+
+Now, we compute a potential quality score of $R2$ (see Eq \ref{eq:eval_pot_acc}):
+\begin{eqnarray}
+\label{eq:exampleaccpot}
+Q_{p\_ACC}(R2) = \frac{TP + TN + FP}{TP + TN + FP + FN}= \frac{0 + 0 + 1}{0 + 0 + 1 + 2} = \frac{1}{3}
+\end{eqnarray}
+Evidently, the potential quality of $R2$ is smaller than the quality of $R1$ so we can exclude the rule $R2$ and all its more specific rules (e.g. $\{t5, t6\}$) from the rule space. Note that an example of how to compute evaluation measures can be found in the next section.
+
+\end{example}
+
+
+To achieve the most effective pruning of rule space, we store a value of the highest quality rule that has been discovered during the learning process in $\mathbbm{R}_{BEST\_SCORE}$ variable, see Algorithm \ref{alg:single_rule}. If the potential quality ($Q_p(R)$) of currently examined rule $R$ is less than the $\mathbbm{R}_{BEST\_SCORE}$, then the rule $R$ and all its more specifics rules are \emph{Redundant Non-potential} and can be excluded from a rule space. 
+
+\subsection*{Evaluation Criteria} \label{sec:eval}
+It is necessary to know the quality of each rule because the rule with the highest value is needed for the final hypothesis. In this case, we define three evaluation functions: accuracy (ACC), F1-score (F1), area under the ROC curve (AUC), and their adjusted versions for evaluating the potentially best results that the current rule can achieve after refinements in future evaluations. Accuracy works well for balanced problems (the number of positive examples is similar to the number of negative ones) and both classes are equally important. F1 and AUC help when dealing with imbalanced classes, F1 puts more emphasis on the positive class.
+
+First of all, we define four elements of confusion matrix: number of true positives (TP), number of false positives (FP), number of false negatives (FN), and number of true negatives (TN) examples that are covered by an arbitrary rule $R$, see Fig \ref{figure:cover_space_acc}.
+
+
+%fig3
+
+TP is given as a cardinality of the intersection of two sets, a set of examples that are covered by the rule $R$ and a set of positive examples $E^{+}$. FP is given as a cardinality of the intersection of two sets, a set of examples that are covered by the rule $R$ and a set of negative examples $E^{-}$. TN is given as a cardinality of the subtraction of two set, a set of negative examples $E^{-}$ and a set of examples that are covered by the rule $R$. Finally, FN is given as a cardinality of subtraction of two sets, a set of positive examples $E^{+}$ and a set of examples that are covered by the rule $R$. All equations are shown below.
+
+\begin{eqnarray}
+\label{eq:tpfptnfn}
+TP = |\Theta(R) \cap E^{+}| \\ 
+FP = |\Theta(R) \cap E^{-}| \\
+TN = |E^{-} \backslash \Theta(R)| \\
+FN = |E^{+} \backslash \Theta(R)|
+\end{eqnarray}
+
+Corresponding accuracy (ACC) of an arbitrary rule $R$ can be computed by the widely known equation below:
+\begin{eqnarray} \label{eq:eval_acc}
+Q_{ACC}(R) = \frac{TP + TN}{TP + TN + FP + FN}.
+\end{eqnarray}
+However, the potentially highest accuracy of rule refined from $R$ is computed differently. In Eq \ref{eq:eval_acc}, we see that the eventual accuracy is given by the numerator (TP and TN) whereas the denominator has the normalization function. Since we assume Eq \ref{eq:cover}, the refinement may improve the rule quality in such a way that the examples that are classified as FP will be re-classified to TN, i.e. the numerator of $Q_{p\_ACC}$ may at best be given by the sum of TN,TP, and FP. The equation for the potentially highest quality reached through refinement follows:
+\begin{eqnarray} \label{eq:eval_pot_acc}
+Q_{p\_ACC}(R) = \frac{TP + TN + FP}{TP + TN + FP + FN}
+\end{eqnarray}
+The computation of $Q_{p\_ACC}$ in Eq \ref{eq:eval_pot_acc} assumes that the rule $R$ aims to cover positive examples rather than negative ones. In other words, examples that are covered by the rule $R$ are classified as positive. Secondly, we propose another evaluation measure that is based on $F1$ score that implicitly does not take into account the number of TNs. Its common form is depicted in Eq \ref{eq:eval_f1}. 
+\begin{eqnarray} \label{eq:eval_f1}
+    Q_{F1}(R) = \frac{2*TP}{2*TP + FP + FN}
+\end{eqnarray}
+The corresponding version of potentially best accurate rule created by applying refinement operator to rule $R$ that is based on the $F1$ measure takes the following form:
+\begin{eqnarray} \label{eq:eval_pot_f1}
+    Q_{p\_F1}(R) = \frac{2*TP}{2*TP + FN},
+\end{eqnarray}
+where all negative examples covered by rule $R$ (FP) are excluded from the denominator in comparison with Eq \ref{eq:eval_f1}. Since there is still the possibility of finding such a rule which covers all examples determined as TP and none of the FPs.
+
+
+
+\begin{example}
+Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, mapping $S$ from Example \ref{ex:3}, and a set of positive ($E^{+}$) and negative ($E^{-}$) examples from Example \ref{ex:non_pot}. Further, we define a rule $R=\{t2\}$. First of all, we find examples that are covered by the rule using $\Theta$ operator, i.e. $\Theta(\{t2\}) = S(t2) = \{e1, e2, e3\}$. Secondly, we compute TP, FP, FN and TN:
+$$TP = |\Theta(r) \cap E^{+}| = |\{e1, e2, e3\} \cap \{e1, e3\}| = 2$$
+$$FP = |\Theta(r) \cap E^{-}| = |\{e1, e2, e3\} \cap \{e2\}| = 1$$
+$$TN = |E^{-} \backslash \Theta(r)| = |\{e2\} \cap \{e1, e2, e3\}| = 0$$
+$$FN = |E^{+} \backslash \Theta(r)| = |\{e1, e3\} \cap \{e1, e2, e3\}| = 0$$
+Finally, we substitute these numbers in Eq \ref{eq:eval_acc} and \ref{eq:eval_pot_acc}:
+$$Q_{ACC}(R) = \frac{TP + TN}{TP + TN + FP + FN} = \frac{2 + 0}{2 + 0 + 1 + 0} = \frac{2}{3}$$
+$$Q_{p\_ACC}(R) = \frac{TP + TN + FP}{TP + TN + FP + FN}= \frac{0 + 0 + 1}{0 + 0 + 1 + 2} = \frac{1}{3}$$
+The final ACC of rule $R$ over the set of positive and negative examples is $\frac{2}{3}$ and the potential best ACC for the set rule and the set of examples is $\frac{1}{3}$.
+\end{example}
+
+Finally, let us give the rule quality in terms of AUC. The area under the curve can be computed easily. Since only the single rule is taken into consideration, its quality is determined by a single point in the ROC plot and it can be computed as a sum of areas of two triangles and one rectangle using an Eq \ref{eq:auc_r}.
+\begin{eqnarray} \label{eq:auc_r}
+    Q_{AUC}(R) = FPR*TPR + (1-FPR)*TPR + \frac{(1-FPR)*(1-TPR)}{2}
+\end{eqnarray}
+TPR (true positive rate) and FPR (false positive rate) are calculated as follows:
+\begin{eqnarray} \label{eq:auc_tpr_fpr}
+    TPR=\frac{TP}{TP+FN}, FPR=\frac{FP}{FP+TN}
+\end{eqnarray}
+\begin{eqnarray} \label{eq:auc_p_r}
+    Q_{p\_AUC}(R) = TPR + \frac{(1-TPR)}{2} 
+\end{eqnarray}
+
+The adjusted version of AUC computing a potentially best AUC that a rule can achieve is shown in Eq \ref{eq:auc_p_r}. In contrast to Eq \ref{eq:auc_r}, $Q_{p\_AUC}$ supposes that FPR goes to zero.
+
+
+\subsection*{Feature Construction}\label{ref:feature_selection}
+In the Problem definition section, we defined the rule space $\mathcal{R}$ as a quasi-ordered set that is expressed as a pair of a set of rules and the relation $\succeq_{r}$ between rules. In addition, the form of rules is determined by propositional logic; more precisely, the rule is restricted to a conjunction of positive terms, i.e.
+$$R=t1 \wedge t2 = \{t1,t2\}, t1,t2 \in O.$$
+
+
+The first step in the rule learning process is feature construction because rule learning employs features as their basic building blocks. In this work, features are constructed trivially from a set of terms $T$ which comes from the ontology $O$ where each ontology term corresponds to one feature.
+
+
+\subsection*{Feature Selection}\label{sec:feature_selection}
+Oftentimes, a constructed feature set is extremely large and also redundant since it contains many features that are not associated with any example. For this reason, a feature selection method is highly recommended. Given this, we propose three various feature selection methods.
+
+\subsubsection*{FS\_atLeastOne}
+The first feature selection method excludes such terms from a constructed feature set which are not associated with at least one example from a set $E^{+} \cup E^{-}$. In other words, this feature selection method removes such terms that are highly specific or do not cover any example. This method guarantees that removed terms cannot positively affect the final evaluation score of a rule because these terms cover an empty set of examples. For this reason, if such terms appeared in a rule then the rule would cover an empty set of examples (see Eq \ref{eq:cover}).
+
+\subsubsection*{FS\_onlySig}\label{ref:significance}
+The second feature selection method preserves only features whose terms are significant. P-values are calculated using a Likelihood Ratio Statistic (LRS) as is presented in \cite{clark1989cn2}. The LRS for the two-class problem measures differences between two distributions: the positive and negative class probability distribution within the set of covered examples and the distribution over the whole example set. It is computed as follows:
+
+\begin{eqnarray}
+    LRS(r) = 2 \times \bigg( TP \times log_{2} \frac{\frac{TP}{TP+TN}}{\frac{TP+FN}{|E|}} + TN \times log_{2} \frac{\frac{TN}{TP+TN}}{\frac{FP+TN}{|E|}} \bigg)
+\end{eqnarray}
+This measure is distributed approximately as $\chi^{2}$ distribution with 1 degree of freedom for two classes. If the LRS is above the specific significance threshold then the term is considered to be significant.
+
+\subsubsection*{FS\_sigAtLeastOne}
+The third feature selection method combines the two previous feature selection methods. A term that belongs to the feature set has to satisfy two conditions: 1) that term covers at least one example, and 2) the term is significant which is calculated by the LRS or the term is a generalization of some significant term. This method combines requirements from the previous two selection methods, its selectivity will be experimentally verified later.
+
+\subsection*{Rule Construction}
+Rule construction is the second step which aims to find a rule that optimizes a given quality criterion in the search space of rules.
+
+The description of the algorithm for single rule learning is depicted in Algorithm \ref{alg:single_rule} where input is a set of positive examples $E^{+}$, a set of negative examples $E^{-}$, a set of ontologies $\mathcal{O}$, a function \emph{buildMapping} that creates a link between the ontology and the set of examples $E$ ($E = E^{+} \cup E^{-}$), and a parameter $k$ that represents the maximal length of induced rules. Note that this function is defined manually by a user. The first step in Algorithm \ref{alg:single_rule} is to find all features. This operation is represented by the function \emph{featureConstruction} at line 4 that assigns all terms from the set of ontologies $\mathcal{O}$ to a set of features $\mathbbm{F}$. To remove irrelevant features from the set of features $\mathbbm{F}$, we propose a function \textit{featureSelection} at line 5. Here, three various feature selection methods are provided as we mentioned in the Feature Selection section, i.e. \emph{FS\_atLeastOne}, \emph{FS\_onlySig}, and \emph{FS\_sigAtLeastOne}.
+
+\begin{algorithm}[!t]
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{featureConstruction}{featureConstruction}\SetKwFunction{featureSelection}{featureSelection}\SetKwFunction{getIndices}{getIndices}
+\SetKwFunction{findCandidates}{findCandidates}\SetKwFunction{refineRule}{refineRule}\SetKwFunction{evaluateCandidate}{evaluateCandidate}\SetKwFunction{isSignificant}{isSignificant}
+\SetKwFunction{filterRules}{filterRules}\SetKwFunction{buildMapping}{buildMapping}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{$E^{+}$, $E^{-}$, $\mathcal{O}$, $k$}
+\Output{$\mathbbm{R}_{BEST}$ \tcp*[h]{conjunction of selectors}}
+\BlankLine
+$\mathbbm{R}_{BEST} \leftarrow \emptyset$\\
+$\mathbbm{R}_{BEST\_SCORE} \leftarrow 0$, $l \leftarrow 0$\\
+\emph{$\mathbbm{M'} \leftarrow$ \buildMapping{$\mathcal{O}$, $E^{+}$, $E^{-}$}}\\
+\emph{$\mathbbm{F} \leftarrow$ \featureConstruction{$\mathcal{O}$}}\\
+\emph{$\mathbbm{F} \leftarrow$ \featureSelection{$\mathbbm{F}$, $E^{+}$,$E^{-}$, $\mathcal{O}$, $M'$}}\\
+%$\mathbbm{R} \leftarrow \mathbbm{F}$\\
+\emph{$\mathbbm{R} \leftarrow \mathbbm{F}$}\\
+\tcp{discover rules until stopConditions}
+\While{$\mathbbm{R} \neq \emptyset$ and $ l < k$}
+{
+	%\emph{$Candidates \leftarrow$ \findCandidates{$\mathbbm{F}$, $O_r$, $P$, $N$}}\\
+	$\mathbbm{R}_{new} \leftarrow \emptyset$\\
+	\tcp*[h]{Refine all rules in R}\\
+	\ForEach{$r \in \mathbbm{R}$}
+	{
+		$newCandidates \leftarrow$ \refineRule{$r$, $\mathbbm{F}$,$\mathcal{O}$, $\mathbbm{R}_{BEST\_SCORE}$, $E^{+} \cup E^{-}$, $M'$}\\
+		$\mathbbm{R}_{new} \leftarrow \mathbbm{R}_{new} \cup newCandidates $\\
+		\tcp*[h]{Find the best rule}\\
+		\ForEach{$nc \in newCandidates$}
+		{
+			$score \leftarrow $\evaluateCandidate{$nc$, $E^{+}$, $E^{-}$,  $\mathcal{O}$, $M'$}\\
+        	\uIf{$score \geq \mathbbm{R}_{BEST\_SCORE}$ AND \isSignificant{$nc$, $E^{+}$, $E^{-}$,  $\mathcal{O}$, $M'$}}
+        	{
+        		$\mathbbm{R}_{BEST} \leftarrow nc$\\
+                $\mathbbm{R}_{BEST\_SCORE} \leftarrow score$\\
+        	}
+		}
+	}
+	$\mathbbm{R} \leftarrow$\filterRules{$\mathbbm{R}_{new}$}\\
+	$l \leftarrow l + 1$  \tcp*[h]{increment the rule length by one}
+}
+\Return{$\mathbbm{R}_{BEST}$}
+\caption{induceSingleRule}\label{alg:single_rule}
+\end{algorithm}
+
+
+The main part of this algorithm is presented in lines 8-24. In this while loop, candidate rules are gradually refined until the maximal length of the rule is reached ($l$ variable represents the current length of rule) or there is nothing to refine, i.e. the algorithm did not create any new rule in the previous iteration. In the for loop (lines 11-21), new candidate rules are generated using the application of the refinement operator on the corresponding parental rules. The algorithm iterates over each rule that is presented in the set of rules $\mathbbm{R}$. To this rule, we apply a new ontology-based refinement operator which is represented at line 12 by the function \textit{refineRule} that uses the Redundant Generalization and Redundant Non-potential reduction procedures.
+%refinement operator
+Similar to the traditional CN2 refinement operator, the ontology-based refinement operator appends a feature to the refined rule. For example, in the case of a conjuction of terms $R = \{t1, t2, t3\}$, a new rule is created as the union of term $t4$ and terms in rule $R$, i.e. $R\_new = \{t1, t2, t3\} \cup \{t4\}$.
+A new refinement operator requires the following inputs: rule $r$ to refine, a set of features $\mathbbm{F}$, an ontology $\mathcal{O}$ for information about relationships, a score of the best rule $\mathbbm{R}_{BEST\_SCORE}$ that has been discovered, a set of positive and negative examples $E$, and a mapping $M'$ that represents a connection between ontologies and examples. The operator returns a set of all refined rules that are not Redundant Generalizations nor Redundant Non-potentials and assigns them to \textit{newCandidates} set.
+
+The \emph{refineRule} function that is described in Algorithm \ref{algo_newrefinement} starts with an empty set $\mathbbm{S}$ where a content of this set will be returned at the end of the function at line 10. The cycle from lines 3 to 6 appends every feature to the rule that should be refined. Up to this part, the algorithm is similar to the traditional refinement operator. However, all rules that are not \emph{Redundant Generalization} are excluded from the set $\mathbbm{S}$ using the ontology $\mathcal{O}$ that provides relationships among terms. This is done by calling a function \emph{removeRedundGeneralizations} at line 8. The function \emph{removeRedundNonPotentials} removes such rules that satisfy the definition of \emph{Redundant Non-potential} rules. In this case, the function continuously checks the following: 1) $R \succeq_{r} \forall s \in \mathbbm{S} \cup R$. This is true since each element $s$ represents a rule that is created as a refinement of rule $R$. 2) For each $s$, if its potential quality $Q_p(s)$ is less than the quality $Q(\mathbbm{R}_{BEST})$ then remove $s$ and all its more specific rules from the set $\mathbbm{S}$. In other words, all rules in $\mathbbm{S}$ whose potential quality can be greater than the rule with the greatest quality $\mathbbm{R}_{BEST}$ are preserved.
+
+
+All candidate rules that were generated in \emph{refineRule} function are assigned to the set of new rules $\mathbbm{R}_{new}$. In addition, all \textit{newCandidates} are evaluated by the function \textit{evaluateCandidate} and its corresponding quality score is compared to the rule with the highest quality stored in a $\mathbbm{R}_{BEST\_SCORE}$. If such a compared rule has a better quality then this rule is assigned to the $\mathbbm{R}_{BEST}$ variable and the score is stored in the $\mathbbm{R}_{BEST\_SCORE}$ variable. Simultaneously, the rule has to be significant. To compute this significance, we use LRS as we did in feature selection.
+
+At the end of the algorithm, the best rule of the all rules that have been discovered is returned. If the function \textit{filterRules} at line 22 is omitted then the Algorithm \ref{alg:single_rule} is called a \emph{brute-force exhaustive search} that explores the whole search space and leads to a combinatorial explosion. For this reason, an appropriate heuristics should be provided for reducing the search space. In this work, we use Beam search that expands only the most promising rules based on the evaluation function. Other rules are disregarded.
+
+
+\begin{algorithm}[!t]
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{getAllRoots}{getAllRoots}\SetKwFunction{getAppendedTermMoreSpecifics}{getAppendedTermMoreSpecifics}
+\SetKwFunction{Pop}{Pop}\SetKwFunction{potencialBestScore}{potencialBestScore}
+\SetKwFunction{isNotRedGeneralization}{isNotRedGeneralization}
+\SetKwFunction{isNotRedNonPotential}{isNotRedNonPotential}
+\SetKwFunction{Push}{Push}
+\SetKwFunction{getDownwardCovers}{getDownwardCovers}
+\SetKwFunction{removeRedundNonPotentials}{removeRedundNonPotentials}
+\SetKwFunction{removeRedundGeneralizations}{removeRedundGeneralizations}
+\SetKwFunction{getBestAncestorsScore}{getBestAncestorsScore}\SetKwFunction{isAppendedTermSpecific}{isAppendedTermSpecific}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{$r$, $F$,$\mathcal{O}$, $\mathbbm{R}_{BEST\_SCORE}$, $E$, $M'$}
+\Output{$\mathbbm{S}$ \tcp*[h]{set of refined rules}}
+\BlankLine
+$\mathbbm{S} \leftarrow \emptyset$\\
+\tcp*[h]{Append all features to the rule}\\
+\ForEach{$f \in F$}
+{
+    $newRule \leftarrow r \cup f$\\
+	$\mathbbm{S} \leftarrow \mathbbm{S} \cup newRule$\\
+}
+\tcp*[h]{Filter rules}\\
+$\mathbbm{S} \leftarrow $\removeRedundGeneralizations{$\mathbbm{S}$, $\mathcal{O}$}\\
+$\mathbbm{S} \leftarrow $\removeRedundNonPotentials{$\mathbbm{S}$, $r$, $O$, $\mathbbm{R}_{BEST\_SCORE}$, $E$, $M'$}\\
+\Return{$\mathbbm{S}$}
+\caption{refineRule}\label{algo_newrefinement}
+\end{algorithm}
+
+
+\section*{Results and discussion}
+In this section, we propose an evaluation procedure that experimentally confirms the efficiency of the new ontology-based refinement operator using two reduction procedures: the \emph{Redundant Generalization} and the \emph{Redundant Non-potential}. The algorithm with the ontology-based operator is called \emph{sem1R} and it is compared against the traditional refinement operator used in CN2, which does not exploit any external knowledge during the rule refining process. Here, it is called \emph{exhaustive refinement}.
+The ability to reduce a search space is tested on three different datasets with three feature selection methods (\emph{FS\_atLeastOne}, \emph{FS\_onlySig}, and \emph{FS\_sigAtLeastOne}) and with three different evaluation functions (ACC, AUC, and F1-score). Observed parameters as a total number of explored rules, which must be refined to find the best rule, and also run times, were measured for the \emph{sem1R} and \emph{exhaustive version}.
+All presented algorithms are implemented in C++ and work with the Open Biological and Biomedical Ontology (OBO) format. Note that the algorithms require at least one ontology.
+
+Because the proposed algorithm requires three inputs, we define their format as it is used in our R package.
+The datasets are represented as a two-dimensional binary matrix $D$ with $i$ rows, $j$ columns, a set of row ontologies $R$, and a set of column ontologies $C$. The mapping $M'$ is constructed such that each row and column is associated with a subset of ontology terms. This construction step has to be done manually by a user based on expert knowledge. In practice, it is necessary to have specific identifiers for rows and columns and these identifiers are associated with corresponding ontology terms. In gene expression analysis, such an identifier can be gene ID (e.g. FBgn for Drosophila melanogaster, ENSB for human or mouse musculus) for rows and sample ID (e.g. FBbt for anatomy compartments of Drosophila melanogaster or Experimental Factor Ontology for experiment metadata) for columns.
+
+To transform a dataset from a two-dimensional binary matrix to the set of positive and negative examples, we design the following procedure. First of all, we suppose that each element of the matrix $D$ represents one example. Then all matrix elements containing 1s are assigned to the set of positive examples $E^{+}$ and elements with 0s are assigned to the set of negative examples $E^{-}$. For a non-binary matrix $D$, binarization is necessary.
+
+
+The first tested dataset comes from \cite{borovec2016binary} and describes the gene expression of imaginal discs of Drosophila melanogaster (DISC) where rows of the dataset correspond to genes and columns correspond to samples. Note that this format is used for all tested datasets. Rows (genes) of DISC dataset are described by Gene ontology \cite{ashburner2000gene,gene2016expansion} and KEGG BRITE database. Columns (samples) are described by Drosophila anatomy ontology (DAO) \cite{costa2013drosophila}. The second dataset called Dresden Ovary Table (DOT) \cite{jambor2015systematic,dot} describes gene expression and RNA localization in fly ovaries using Gene ontology, KEGG BRITE database, and an ontology provided by the authors is freely available at \cite{dot}, respectively. Note that DOT and DISC are originally formed as a binary matrix. Last but not least, the third dataset was downloaded via Expression Atlas \cite{petryszak2015expression} where it is called \emph{Strand-specific RNA-seq of nine mouse tissues}\cite{merkin2012evolutionary} (m2801) and using Gene ontology and Experimental Factor Ontology (EFO) \cite{malone2010modeling}. For binarization, we set up cutoff to 0.5 TPM (Transcripts Per Kilobase Million) because it is presented as a default value in Expression Atlas and it maintains comparable numbers of positive and negative examples. If a value in the matrix is higher than 0.5 TPM then the value is set to 1 and the element is assigned as a positive example otherwise the value is 0 and the element goes to the set of negative examples $E^{-}$.
+
+Also, it may be desirable to find descriptive rules only for pre-defined rows (genes) or columns (samples) that are relevant to specific research. Specifically, it can be significantly expressed genes in a treatment group against the control group. In this case, the matrix $D$ has only $i_{s}$ rows corresponding to significantly expressed genes and $j_{t}$ columns corresponding to samples belonging to the treatment group and $j_{c}$ columns belong the control group. Here, each of the elements belonging to the treatment group is set up to 1 and is considered to be positive, others are 0 which means negatives. The total number of examples is $i_{s} * j_{t}$ and $i_{s} * j_{c}$ for positive and negative examples, respectively.
+
+
+%table1
+
+
+Basic statistics of tested datasets, as a number of rows and columns, a number of positive and negative examples, and a number of ontology terms for given ontologies, are depicted in Table \ref{tab:stats}. Because there are some terms that do not associate with any example and such terms are not good candidates to be a feature since they do not cover any example, the final feature sets can be given by one of the three feature selection methods mentioned in the Feature Selection section.
+The numbers of features that were used for each rule induction step are shown in Fig \ref{fig:feature_selection_methods}.
+
+
+%fig4
+
+These experiments clearly confirm our presumptions, defined in the Feature Selection section, where we assumed that the most reducing feature selection method is \emph{FS\_onlySig}. On the other hand, the most benevolent or conservative method is \emph{FS\_atLeastOne}, which guarantees that any of the relevant features possibly positively affecting the quality score of the hypothesis will not be discarded from the feature set. The \emph{FS\_sigAtLeastOne} demonstrates a similar behavior to \emph{FS\_atLeastOne}. Concretely, the \emph{FS\_sigAtLeastOne} method produces a smaller feature set than \emph{FS\_atLeastOne}. However, the differences are not huge.
+
+For each tested dataset we run the algorithm with three different evaluation functions (ACC, AUC, and F1 score) and with three various feature selection methods (\emph{FS\_atLeastOne}, \emph{FS\_onlySig}, and \emph{FS\_sigAtLeastOne}) for both refinement operators, the proposed \emph{sem1R} using two reduction procedures and \emph{exhaustive refinement} as a traditional refinement operator. To avoid a combinatorial explosion problem in exploring the rule space, we use a Beam search which is represented by \emph{filterRules} function in Algorithm \ref{alg:single_rule}. The width of the beam was set no higher than the 100 best rules, the rules are sorted according to their quality score calculated with one of the given evaluation functions. We decided to use this threshold, because greater beam widths result in huge run times in \emph{exhaustive} version. At the same time, the ability of \emph{sem1R} to reduce the search space and consequently reduce run time is obvious even below the beam width of 100. Theoretically, it is anticipated that the ability to reduce a search space grows with the beam width since there are potentially more rules to prune especially for \emph{Redundant Non-potential} procedure. Also, the value 100 seems to be a good trade-off between run time and memory management.
+
+Total run time and total number of explored rules were observed for rules with the maximum length of 10 because longer rules can be more difficult to interpret in real problems, especially in a biology domain. The total number of induced rules for each dataset was set to 10, for the same reason as previously mentioned. The final results of experiments as total run time in seconds and total number of explored rules are depicted in Table \ref{tab:runtimes_short_sem1r} for \emph{sem1R} and in Table \ref{tab:runtimes_short_exhaustive} for \emph{exhaustive refinement}.
+
+
+%table2
+
+%table3
+
+
+A graphical representation is shown in Fig \ref{fig:final_results} and Fig \ref{fig:final_results_nodes}. The first one shows run times in logarithm scale depending on the number of induced rules for \emph{sem1R} (dashed line) and \emph{exhaustive refinement} (full line). Run time was measured for three datasets with three different evaluation functions and with three different feature selection methods. Evidently, in all cases, the run time of \emph{sem1R} is significantly lower. Fig \ref{fig:final_results_nodes} shows the total number of rules that have been evaluated in a logarithmic scale that depends on the number of rules. As in the previous figure, the number of rules was measured for three datasets with three different evaluation functions and with three different feature selection methods. But even in this case, \emph{sem1R} with its \emph{Redundant Generalization} and \emph{Redundant Non-potential} procedures prunes the rule space more rapidly in comparison with the traditional \emph{exhaustive refinement}. Note that using \emph{FS\_onlySig} method, the smallest number of rules is evaluated. This corresponds to the results in Fig~\ref{fig:feature_selection_methods}.
+
+
+
+%fig5
+
+%fig6
+
+In all various experimental settings, both \emph{exhaustive refinement} and \emph{sem1R} induce rules with the same quality score across corresponding experiments. The level of significance was set to 99\% for feature selection method \emph{FS\_onlySig} and \emph{FS\_sigAtLeastOne} and also the same significance level for finding the best rule in \emph{induceSingleRule} function. From Figs \ref{fig:final_results} and \ref{fig:final_results_nodes} it is obvious that  F1-score prunes the search space most and the run of the algorithm is fastest. One of the reasons is that only TP, FP, and FN must be calculated here. On the other hand, AUC is less strict in the pruning of the search space and it is also the slowest, because Eqs \ref{eq:auc_r}, \ref{eq:auc_tpr_fpr} and \ref{eq:auc_p_r} have to be calculated for every candidate solution and the algorithm has to evaluate the highest number of candidate rules. There is a clear trade-off between the efficiency and complexity of evaluation that stands behind AUC. All results of the experiments are appended to Additional file 1.
+
+
+
+
+For illustration and better understanding, we present an example of 2-terms long rule induced from the DISC dataset, where each term comes from a different ontology. The rule is following: GO:0002181 AND FBbt:00000015. This reported rule is enriched (it covers far more positive examples than expected by random). The FBbt identifier refers to a term from Drosophila anatomy ontology and the GO identifier refers to a term from Gene ontology. In this particular case, the rule says that all genes that are associated with a cytoplasmic translation process (the chemical reactions and pathways resulting in the formation of a protein in the cytoplasm) tend to be over-represented in thorax segment of Drosophila melanogaster.
+
+
+
+\section*{Conclusion}
+
+We proposed and implemented a new rule learning algorithm that induces a set of rules related to ontologies or taxonomies. Using two novel reduction procedures \emph{Redundant Generalization} and \emph{Redundant Non-potential}, which are part of the proposed ontology-based refinement operator, we dramatically reduce the search space. Consequently, runtime of the algorithm is decreased rapidly as well. These procedures guarantee that any removed rule cannot positively affect the quality of the final hypothesis. Also, three various feature selection methods that help to increase the efficiency of the algorithm were proposed.
+The algorithm is implemented in C++ and it is available at http://github.com/fmalinka/sem1r as R package. We demonstrated our algorithm on three real gene expression datasets, however, it is generally applicable to any learning task that combines measurements and ontologies, including metabolomics, etc.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Backmatter begins here                   %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{backmatter}
+
+\section*{Competing interests}
+The authors declare that they have no competing interests.
+
+\section*{Author's contributions}
+FM proposed, implemented, tested the algorithms, and drafted the manuscript. JK and FZ reviewed and edited the manuscript. JK and FZ motivated the research problem and JK led the project. All authors read and approved the final manuscript.
+
+\section*{Acknowledgements}
+Supported by grant NU20-03-00412 from the Ministry of Health of the Czech Republic, SGS17/189/OHK3/3T/13, and Research Center for Informatics CZ.02.1.01/0.0/0.0/16\_019/0000765.
+ 
+ \section*{Funding}
+Supported by grant NU20-03-00412 from the Ministry of Health of the Czech Republic, SGS17/189/OHK3/3T/13, and Research Center for Informatics CZ.02.1.01/0.0/0.0/16\_019/0000765.
+
+ \section*{Availability of data and materials}
+The datasets generated during and/or analysed during the current study are available at the GitHub repository, [http://www.github.com/fmalinka/sem1r]
+
+ \section*{Ethics approval and consent to participate}
+Not applicable
+
+ \section*{Consent for publication}
+Not applicable
+
+ \section*{Competing interests}
+The authors declare that they have no competing interests.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if your bibliography is in bibtex format, use those commands:
+\bibliographystyle{bmc-mathphys} % Style BST file (bmc-mathphys, vancouver, spbasic).
+\bibliography{bmc_article}      % Bibliography file (usually '*.bib' )
+% for author-year bibliography (bmc-mathphys or spbasic)
+% a) write to bib file (bmc-mathphys only)
+% @settings{label, options="nameyear"}
+% b) uncomment next line
+%\nocite{label}
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+\begin{figure}[h!]
+\caption{\csentence{} An example of partial-order binary relation $\succeq$ over a set of terms $T$. The partial-ordered set is depicted in the form of a Hasse diagram. Elements in curly brackets represent examples that are associated with the terms according to the mapping $M'$. The terms and relations come from Gene Ontology.}
+\label{figure:onto1}
+\includegraphics{Fig1.eps}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{\csentence{} An example of spreading information about associations between examples and terms over the whole ontology. The mapping $S$ was applied on each term comes from Fig \ref{figure:onto1} which was previously defined in Examples \ref{ex:onto} and \ref{ex:2}.}
+\label{figure:onto2}
+\includegraphics{Fig2.eps}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{\csentence{} A graph representing a set of positive examples $P$ and negative examples $N$ and the way they are covered by a rule $R$ assuming that $R$ is focused on the classification of positive examples. Subspaces corresponding to TP, FP, FN and TN examples are also depicted.}
+\label{figure:cover_space_acc}
+\includegraphics{Fig3.eps}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{\csentence{} An average number of features across DISC, DOT, and m2801 datasets for three various feature selection methods \emph{FS\_atLeastOne}, \emph{FS\_onlySig}, and \emph{FS\_sigAtLeastOne}. These results were computed using three evaluation functions ACC, AUC, and F1-score.}
+\label{fig:feature_selection_methods}
+\includegraphics{Fig4.eps}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{\csentence{} Total run time in logarithm scale depending on the number of induced rules for three datasets (DISC, DOT, and m2801). ACC, AUC, and F1-score were used for evaluating the quality of rules and three feature selection methods (\emph{FS\_atLeastOne}, \emph{FS\_onlySig}, and \emph{FS\_sigAtLeastOne}) were applied before rule induction. Dashed line represents \emph{sem1R}, full line represents \emph{exhaustive refinement}.}
+\label{fig:final_results}
+\includegraphics{Fig5.eps}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{\csentence{} Total number of candidate rules in logarithm scale depending on the number of induced rules for three datasets (DISC, DOT, and m2801). ACC, AUC, and F1-score were used for evaluating the quality of rules and three feature selection methods (\emph{FS\_atLeastOne}, \emph{FS\_onlySig}, and \emph{FS\_sigAtLeastOne}) were applied before rule induction. Dashed line represents \emph{sem1R}, full line represents \emph{exhaustive refinement}.}
+\label{fig:final_results_nodes}
+\includegraphics{Fig6.eps}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Tables                        %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use of \listoftables is discouraged.
+%%
+\section*{Tables}
+%\begin{table}[h!]
+%\caption{Sample table title. This is where the description of the table should go.}
+%      \begin{tabular}{cccc}
+%        \hline
+%           & B1  &B2   & B3\\ \hline
+%        A1 & 0.1 & 0.2 & 0.3\\
+%        A2 & ... & ..  & .\\
+%        A3 & ..  & .   & .\\ \hline
+%      \end{tabular}
+%\end{table}
+
+\begin{table}[h!]
+%\begin{adjustwidth}%{-1.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+\centering
+\caption{
+{\bf Statistics for DOT, DISC, and m2801 dataset.}}\label{tab:stats}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|l|}{\bf Dataset} & {\bf Size} & {\bf \# of pos/neg examples} & {\bf \# of ontology terms} \\ \hline
+DOT & 6,510 $\times$ 100 & 309,593/341,407 & 42,964 (GO)/32,488 (BRITE)/140 (DOT) \\ \hline
+DISC & 1,207 $\times$ 72 & 65,537/21,367 & 42,964 (GO)/32,488 (BRITE)/9,255 (DAO) \\ \hline
+m2801 & 12,225 $\times$ 26 & 124,032/193,818 & 42,964 (GO)/18,786 (EFO) \\ \hline
+\end{tabular}
+%\begin{flushleft} Table notes Phasellus venenatis, tortor nec vestibulum mattis, massa tortor interdum felis, nec pellentesque metus tortor nec nisl. Ut ornare mauris tellus, vel dapibus arcu suscipit sed.
+%\end{flushleft}
+%\label{table1}
+%\end{adjustwidth}
+\end{table}
+
+\begin{table}[h!]
+%\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+\centering
+\caption{
+{\bf Total runtime [s] and a total number of explored rules of sem1R algorithm for DOT, DISC, and m2801 dataset.}}\label{tab:runtimes_short_sem1r}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+  \multirow{3}{*}{{\bf Dataset}} & \multirow{3}{*}{{\bf Feature selection}} & \multicolumn{6}{c|}{} \\
+  & & \multicolumn{2}{c|}{{\bf ACC score}} & \multicolumn{2}{c|}{{\bf F1 score}} & \multicolumn{2}{c|}{{\bf AUC score}}\\
+   & & {\bf total time} & {\bf \# of rules} & {\bf total time} & {\bf \# of rules} & {\bf total time} & {\bf \# of rules} \\ \hline
+\multirow{3}{*}{DOT} & \emph{FS\_atLeastOne} & 303.636
+ & 107,964 & 22.381 & 26,460 & 142.302 & 52,638 \\ \cline{2-8}
+ &  \emph{FS\_onlySig}&  235.947 & 54,167 & 11.427 & 9,780 & 102.760 & 25,817 \\ \cline{2-8}
+ & \emph{FS\_sigAtLeastOne} & 250.633 & 107,535 & 19.813 & 25,756 & 115.994 & 52,136 \\ \hline
+\multirow{3}{*}{DISC} & \emph{FS\_atLeastOne} & 10.737 & 102,219 & 8.059 & 178,346 & 60.780 & 609,937 \\ \cline{2-8}
+ & \emph{FS\_onlySig} & 1.777 & 87,671 & 1.109 & 7,223 & 33.304 & 67,558 \\ \cline{2-8}
+ & \emph{FS\_sigAtLeastOne} & 1.955 & 13,041 & 1.330 & 11,270 & 25.861 & 91,003 \\ \hline
+\multirow{3}{*}{m2801} & \emph{FS\_atLeastOne} & 699.273 & 461,745 & 28.087 & 80,079 & 168.210 & 225,081 \\ \cline{2-8}
+ & \emph{FS\_onlySig} & 914.283 & 340,039 & 21.594 & 18,787 & 148.992 & 82,456 \\ \cline{2-8}
+ & \emph{FS\_sigAtLeastOne} & 802.176 & 433,393 & 18.939 & 32,054 & 123.561 & 124,002 \\ \hline
+\end{tabular}
+%\begin{flushleft} Table notes Phasellus venenatis, tortor nec vestibulum mattis, massa tortor interdum felis, nec pellentesque metus tortor nec nisl. Ut ornare mauris tellus, vel dapibus arcu suscipit sed.
+%\end{flushleft}
+%\label{table1}
+%\end{adjustwidth}
+\end{table}
+
+\begin{table}[h!]
+%\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+\centering
+\caption{
+{\bf Total runtime [s] and the total number of explored rules of exhaustive refinement for DOT, DISC, and m2801 dataset.}}\label{tab:runtimes_short_exhaustive}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+  \multirow{3}{*}{{\bf Dataset}} & \multirow{3}{*}{{\bf Feature selection}} & \multicolumn{6}{c|}{} \\
+  & & \multicolumn{2}{c|}{{\bf ACC score}} & \multicolumn{2}{c|}{{\bf F1 score}} & \multicolumn{2}{c|}{{\bf AUC score}}\\
+   & & {\bf total time} & {\bf \# of rules} & {\bf total time} & {\bf \# of rules} & {\bf total time} & {\bf \# of rules} \\ \hline
+\multirow{3}{*}{DOT} & \emph{FS\_atLeastOne} & 33,800.529 & 62,192,307 & 12,807.090 & 21,977,679 & 22,814.993 & 37,604,456 \\ \cline{2-8}
+ &  \emph{FS\_onlySig}&  15,849.761 & 30,991,466 & 5,049.444 & 8,075,976 & 9,042.203 & 15,672,577 \\ \cline{2-8}
+ & \emph{FS\_sigAtLeastOne} & 33,638.549 & 61,912,986 & 12,743.265 & 21,674,132 & 22,726.459 & 37,176,099 \\ \hline
+\multirow{3}{*}{DISC} & \emph{FS\_atLeastOne} & 996.587 & 10,681,537 & 881.007 & 11,017,701 & 2,214.819 & 38,874,717 \\ \cline{2-8}
+ & \emph{FS\_onlySig} & 623.078 & 6,125,970 & 524.412 & 6,041,883 & 1,323.920 & 21,618,242 \\ \cline{2-8}
+ & \emph{FS\_sigAtLeastOne} & 963.291 & 9,406,704 & 817.055 & 9,484,372 & 2,145.880 & 37,172,305 \\ \hline
+\multirow{3}{*}{m2801} & \emph{FS\_atLeastOne} & 53,163.030 & 153,778,914 & 6,573.700 & 26,766,658 & 12,766.542 & 64,329,543 \\ \cline{2-8}
+ & \emph{FS\_onlySig} & 29,641.080 & 86,150,004 & 3,873.421 & 14,168,195 & 6,741.368 & 29,298,233 \\ \cline{2-8}
+ & \emph{FS\_sigAtLeastOne} & 53,019.570 & 153,255,327 & 6,431.049 & 25,255,830 & 12,391.710 & 59,322,805 \\ \hline
+\end{tabular}
+%\begin{flushleft} Table notes Phasellus venenatis, tortor nec vestibulum mattis, massa tortor interdum felis, nec pellentesque metus tortor nec nisl. Ut ornare mauris tellus, vel dapibus arcu suscipit sed.
+%\end{flushleft}
+%\label{table1}
+%\end{adjustwidth}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Additional Files              %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Additional Files}
+  \subsection*{Additional file 1 --- All experiment measurements}
+   Excel file contains all presented measurements for DISC, DOT, and m2801 dataset.
+
+\end{backmatter}
+\end{document}
