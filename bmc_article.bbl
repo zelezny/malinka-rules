@@ -1,0 +1,1263 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{39}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\textsf{#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem{stevens2000ontology}
+\begin{barticle}
+\bauthor{\bsnm{Stevens}, \binits{R.}},
+\bauthor{\bsnm{Goble}, \binits{C.A.}},
+\bauthor{\bsnm{Bechhofer}, \binits{S.}}:
+\batitle{Ontology-based knowledge representation for bioinformatics}.
+\bjtitle{Briefings in bioinformatics}
+\bvolume{1}(\bissue{4}),
+\bfpage{398}--\blpage{414}
+(\byear{2000})
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem{osterlund2017integrative}
+\begin{barticle}
+\bauthor{\bsnm{{\"O}sterlund}, \binits{T.}},
+\bauthor{\bsnm{Cvijovic}, \binits{M.}},
+\bauthor{\bsnm{Kristiansson}, \binits{E.}}:
+\batitle{Integrative analysis of omics data}.
+\bjtitle{Systems biology}
+\bvolume{6},
+\bfpage{1}
+(\byear{2017})
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem{rajasundaram2016more}
+\begin{barticle}
+\bauthor{\bsnm{Rajasundaram}, \binits{D.}},
+\bauthor{\bsnm{Selbig}, \binits{J.}}:
+\batitle{More effort—more results: recent advances in integrative ‘omics’
+  data analysis}.
+\bjtitle{Current opinion in plant biology}
+\bvolume{30},
+\bfpage{57}--\blpage{61}
+(\byear{2016})
+\end{barticle}
+\endbibitem
+
+%%% 4
+\bibitem{smith2007obo}
+\begin{barticle}
+\bauthor{\bsnm{Smith}, \binits{B.}},
+\bauthor{\bsnm{Ashburner}, \binits{M.}},
+\bauthor{\bsnm{Rosse}, \binits{C.}},
+\bauthor{\bsnm{Bard}, \binits{J.}},
+\bauthor{\bsnm{Bug}, \binits{W.}},
+\bauthor{\bsnm{Ceusters}, \binits{W.}},
+\bauthor{\bsnm{Goldberg}, \binits{L.J.}},
+\bauthor{\bsnm{Eilbeck}, \binits{K.}},
+\bauthor{\bsnm{Ireland}, \binits{A.}},
+\bauthor{\bsnm{Mungall}, \binits{C.J.}}, \betal:
+\batitle{The obo foundry: coordinated evolution of ontologies to support
+  biomedical data integration}.
+\bjtitle{Nature biotechnology}
+\bvolume{25}(\bissue{11}),
+\bfpage{1251}
+(\byear{2007})
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem{subramanian2005gene}
+\begin{barticle}
+\bauthor{\bsnm{Subramanian}, \binits{A.}},
+\bauthor{\bsnm{Tamayo}, \binits{P.}},
+\bauthor{\bsnm{Mootha}, \binits{V.K.}},
+\bauthor{\bsnm{Mukherjee}, \binits{S.}},
+\bauthor{\bsnm{Ebert}, \binits{B.L.}},
+\bauthor{\bsnm{Gillette}, \binits{M.A.}},
+\bauthor{\bsnm{Paulovich}, \binits{A.}},
+\bauthor{\bsnm{Pomeroy}, \binits{S.L.}},
+\bauthor{\bsnm{Golub}, \binits{T.R.}},
+\bauthor{\bsnm{Lander}, \binits{E.S.}}, \betal:
+\batitle{Gene set enrichment analysis: a knowledge-based approach for
+  interpreting genome-wide expression profiles}.
+\bjtitle{Proceedings of the National Academy of Sciences}
+\bvolume{102}(\bissue{43}),
+\bfpage{15545}--\blpage{15550}
+(\byear{2005})
+\end{barticle}
+\endbibitem
+
+%%% 6
+\bibitem{ashburner2000gene}
+\begin{barticle}
+\bauthor{\bsnm{Ashburner}, \binits{M.}},
+\bauthor{\bsnm{Ball}, \binits{C.A.}},
+\bauthor{\bsnm{Blake}, \binits{J.A.}},
+\bauthor{\bsnm{Botstein}, \binits{D.}},
+\bauthor{\bsnm{Butler}, \binits{H.}},
+\bauthor{\bsnm{Cherry}, \binits{J.M.}},
+\bauthor{\bsnm{Davis}, \binits{A.P.}},
+\bauthor{\bsnm{Dolinski}, \binits{K.}},
+\bauthor{\bsnm{Dwight}, \binits{S.S.}},
+\bauthor{\bsnm{Eppig}, \binits{J.T.}}, \betal:
+\batitle{Gene ontology: tool for the unification of biology}.
+\bjtitle{Nature genetics}
+\bvolume{25}(\bissue{1}),
+\bfpage{25}
+(\byear{2000})
+\end{barticle}
+\endbibitem
+
+%%% 7
+\bibitem{gene2016expansion}
+\begin{barticle}
+\bauthor{\bsnm{Consortium}, \binits{G.O.}}:
+\batitle{Expansion of the gene ontology knowledgebase and resources}.
+\bjtitle{Nucleic acids research}
+\bvolume{45}(\bissue{D1}),
+\bfpage{331}--\blpage{338}
+(\byear{2016})
+\end{barticle}
+\endbibitem
+
+%%% 8
+\bibitem{curtis2005pathways}
+\begin{barticle}
+\bauthor{\bsnm{Curtis}, \binits{R.K.}},
+\bauthor{\bsnm{Ore{\v{s}}i{\v{c}}}, \binits{M.}},
+\bauthor{\bsnm{Vidal-Puig}, \binits{A.}}:
+\batitle{Pathways to the analysis of microarray data}.
+\bjtitle{TRENDS in Biotechnology}
+\bvolume{23}(\bissue{8}),
+\bfpage{429}--\blpage{435}
+(\byear{2005})
+\end{barticle}
+\endbibitem
+
+%%% 9
+\bibitem{kanehisa2016kegg}
+\begin{barticle}
+\bauthor{\bsnm{Kanehisa}, \binits{M.}},
+\bauthor{\bsnm{Furumichi}, \binits{M.}},
+\bauthor{\bsnm{Tanabe}, \binits{M.}},
+\bauthor{\bsnm{Sato}, \binits{Y.}},
+\bauthor{\bsnm{Morishima}, \binits{K.}}:
+\batitle{Kegg: new perspectives on genomes, pathways, diseases and drugs}.
+\bjtitle{Nucleic acids research}
+\bvolume{45}(\bissue{D1}),
+\bfpage{353}--\blpage{361}
+(\byear{2016})
+\end{barticle}
+\endbibitem
+
+%%% 10
+\bibitem{kanehisa2015kegg}
+\begin{barticle}
+\bauthor{\bsnm{Kanehisa}, \binits{M.}},
+\bauthor{\bsnm{Sato}, \binits{Y.}},
+\bauthor{\bsnm{Kawashima}, \binits{M.}},
+\bauthor{\bsnm{Furumichi}, \binits{M.}},
+\bauthor{\bsnm{Tanabe}, \binits{M.}}:
+\batitle{Kegg as a reference resource for gene and protein annotation}.
+\bjtitle{Nucleic acids research}
+\bvolume{44}(\bissue{D1}),
+\bfpage{457}--\blpage{462}
+(\byear{2015})
+\end{barticle}
+\endbibitem
+
+%%% 11
+\bibitem{kanehisa2000kegg}
+\begin{barticle}
+\bauthor{\bsnm{Kanehisa}, \binits{M.}},
+\bauthor{\bsnm{Goto}, \binits{S.}}:
+\batitle{Kegg: kyoto encyclopedia of genes and genomes}.
+\bjtitle{Nucleic acids research}
+\bvolume{28}(\bissue{1}),
+\bfpage{27}--\blpage{30}
+(\byear{2000})
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem{croft2013reactome}
+\begin{barticle}
+\bauthor{\bsnm{Croft}, \binits{D.}},
+\bauthor{\bsnm{Mundo}, \binits{A.F.}},
+\bauthor{\bsnm{Haw}, \binits{R.}},
+\bauthor{\bsnm{Milacic}, \binits{M.}},
+\bauthor{\bsnm{Weiser}, \binits{J.}},
+\bauthor{\bsnm{Wu}, \binits{G.}},
+\bauthor{\bsnm{Caudy}, \binits{M.}},
+\bauthor{\bsnm{Garapati}, \binits{P.}},
+\bauthor{\bsnm{Gillespie}, \binits{M.}},
+\bauthor{\bsnm{Kamdar}, \binits{M.R.}}, \betal:
+\batitle{The reactome pathway knowledgebase}.
+\bjtitle{Nucleic acids research}
+\bvolume{42}(\bissue{D1}),
+\bfpage{472}--\blpage{477}
+(\byear{2013})
+\end{barticle}
+\endbibitem
+
+%%% 13
+\bibitem{fuerkranz2012rules}
+\begin{bbook}
+\bauthor{\bsnm{Fuerkranz}, \binits{J.}},
+\bauthor{\bsnm{Gamberger}, \binits{D.}},
+\bauthor{\bsnm{Lavrac}, \binits{N.}}:
+\bbtitle{Foundations of Rule Learning},
+(\byear{Springer, 2012})
+\end{bbook}
+\endbibitem
+
+%%% 14
+\bibitem{kotsiantis2007supervised}
+\begin{barticle}
+\bauthor{\bsnm{Kotsiantis}, \binits{S.B.}},
+\bauthor{\bsnm{Zaharakis}, \binits{I.}},
+\bauthor{\bsnm{Pintelas}, \binits{P.}}:
+\batitle{Supervised machine learning: A review of classification techniques}.
+\bjtitle{Emerging artificial intelligence applications in computer engineering}
+\bvolume{160},
+\bfpage{3}--\blpage{24}
+(\byear{2007})
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem{hvidsten2003learning}
+\begin{barticle}
+\bauthor{\bsnm{Hvidsten}, \binits{T.R.}},
+\bauthor{\bsnm{L{\ae}greid}, \binits{A.}},
+\bauthor{\bsnm{Komorowski}, \binits{J.}}:
+\batitle{Learning rule-based models of biological process from gene expression
+  time profiles using gene ontology}.
+\bjtitle{Bioinformatics}
+\bvolume{19}(\bissue{9}),
+\bfpage{1116}--\blpage{1123}
+(\byear{2003})
+\end{barticle}
+\endbibitem
+
+%%% 16
+\bibitem{calzone2006machine}
+\begin{bchapter}
+\bauthor{\bsnm{Calzone}, \binits{L.}},
+\bauthor{\bsnm{Chabrier-Rivier}, \binits{N.}},
+\bauthor{\bsnm{Fages}, \binits{F.}},
+\bauthor{\bsnm{Soliman}, \binits{S.}}:
+\bctitle{Machine learning biochemical networks from temporal logic properties}.
+In: \bbtitle{Transactions on Computational Systems Biology VI},
+pp. \bfpage{68}--\blpage{94}.
+\bpublisher{Springer}, \blocation{???}
+(\byear{2006})
+\end{bchapter}
+\endbibitem
+
+%%% 17
+\bibitem{bellazzi2008predictive}
+\begin{barticle}
+\bauthor{\bsnm{Bellazzi}, \binits{R.}},
+\bauthor{\bsnm{Zupan}, \binits{B.}}:
+\batitle{Predictive data mining in clinical medicine: current issues and
+  guidelines}.
+\bjtitle{International journal of medical informatics}
+\bvolume{77}(\bissue{2}),
+\bfpage{81}--\blpage{97}
+(\byear{2008})
+\end{barticle}
+\endbibitem
+
+%%% 18
+\bibitem{schriml2011disease}
+\begin{barticle}
+\bauthor{\bsnm{Schriml}, \binits{L.M.}},
+\bauthor{\bsnm{Arze}, \binits{C.}},
+\bauthor{\bsnm{Nadendla}, \binits{S.}},
+\bauthor{\bsnm{Chang}, \binits{Y.-W.W.}},
+\bauthor{\bsnm{Mazaitis}, \binits{M.}},
+\bauthor{\bsnm{Felix}, \binits{V.}},
+\bauthor{\bsnm{Feng}, \binits{G.}},
+\bauthor{\bsnm{Kibbe}, \binits{W.A.}}:
+\batitle{Disease ontology: a backbone for disease semantic integration}.
+\bjtitle{Nucleic acids research}
+\bvolume{40}(\bissue{D1}),
+\bfpage{940}--\blpage{946}
+(\byear{2011})
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem{kibbe2014disease}
+\begin{barticle}
+\bauthor{\bsnm{Kibbe}, \binits{W.A.}},
+\bauthor{\bsnm{Arze}, \binits{C.}},
+\bauthor{\bsnm{Felix}, \binits{V.}},
+\bauthor{\bsnm{Mitraka}, \binits{E.}},
+\bauthor{\bsnm{Bolton}, \binits{E.}},
+\bauthor{\bsnm{Fu}, \binits{G.}},
+\bauthor{\bsnm{Mungall}, \binits{C.J.}},
+\bauthor{\bsnm{Binder}, \binits{J.X.}},
+\bauthor{\bsnm{Malone}, \binits{J.}},
+\bauthor{\bsnm{Vasant}, \binits{D.}}, \betal:
+\batitle{Disease ontology 2015 update: an expanded and updated database of
+  human diseases for linking biomedical knowledge through disease data}.
+\bjtitle{Nucleic acids research}
+\bvolume{43}(\bissue{D1}),
+\bfpage{1071}--\blpage{1078}
+(\byear{2014})
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem{miller1995wordnet}
+\begin{barticle}
+\bauthor{\bsnm{Miller}, \binits{G.A.}}:
+\batitle{Wordnet: a lexical database for english}.
+\bjtitle{Communications of the ACM}
+\bvolume{38}(\bissue{11}),
+\bfpage{39}--\blpage{41}
+(\byear{1995})
+\end{barticle}
+\endbibitem
+
+%%% 21
+\bibitem{suchanek2007yago}
+\begin{bchapter}
+\bauthor{\bsnm{Suchanek}, \binits{F.M.}},
+\bauthor{\bsnm{Kasneci}, \binits{G.}},
+\bauthor{\bsnm{Weikum}, \binits{G.}}:
+\bctitle{Yago: a core of semantic knowledge}.
+In: \bbtitle{Proceedings of the 16th International Conference on World Wide
+  Web},
+pp. \bfpage{697}--\blpage{706}
+(\byear{2007}).
+\bcomment{ACM}
+\end{bchapter}
+\endbibitem
+
+%%% 22
+\bibitem{clark1989cn2}
+\begin{barticle}
+\bauthor{\bsnm{Clark}, \binits{P.}},
+\bauthor{\bsnm{Niblett}, \binits{T.}}:
+\batitle{The cn2 induction algorithm}.
+\bjtitle{Machine learning}
+\bvolume{3}(\bissue{4}),
+\bfpage{261}--\blpage{283}
+(\byear{1989})
+\end{barticle}
+\endbibitem
+
+%%% 23
+\bibitem{cohen1995fast}
+\begin{bchapter}
+\bauthor{\bsnm{Cohen}, \binits{W.W.}}:
+\bctitle{Fast effective rule induction}.
+In: \bbtitle{Machine Learning Proceedings 1995},
+pp. \bfpage{115}--\blpage{123}.
+\bpublisher{Elsevier}, \blocation{???}
+(\byear{1995})
+\end{bchapter}
+\endbibitem
+
+%%% 24
+\bibitem{klema2017semantic}
+\begin{barticle}
+\bauthor{\bsnm{Kl{\'e}ma}, \binits{J.}},
+\bauthor{\bsnm{Malinka}, \binits{F.}}, \betal:
+\batitle{Semantic biclustering for finding local, interpretable and predictive
+  expression patterns}.
+\bjtitle{BMC genomics}
+\bvolume{18}(\bissue{7}),
+\bfpage{41}
+(\byear{2017})
+\end{barticle}
+\endbibitem
+
+%%% 25
+\bibitem{clark1991rule}
+\begin{bchapter}
+\bauthor{\bsnm{Clark}, \binits{P.}},
+\bauthor{\bsnm{Boswell}, \binits{R.}}:
+\bctitle{Rule induction with cn2: Some recent improvements}.
+In: \bbtitle{European Working Session on Learning},
+pp. \bfpage{151}--\blpage{163}
+(\byear{1991}).
+\bcomment{Springer}
+\end{bchapter}
+\endbibitem
+
+%%% 26
+\bibitem{friedman1999bump}
+\begin{barticle}
+\bauthor{\bsnm{Friedman}, \binits{J.H.}},
+\bauthor{\bsnm{Fisher}, \binits{N.I.}}:
+\batitle{Bump hunting in high-dimensional data}.
+\bjtitle{Statistics and Computing}
+\bvolume{9}(\bissue{2}),
+\bfpage{123}--\blpage{143}
+(\byear{1999})
+\end{barticle}
+\endbibitem
+
+%%% 27
+\bibitem{deraedt2016srl}
+\begin{bbook}
+\bauthor{\bsnm{{De Raedt}}, \binits{L.}}:
+\bbtitle{Statistical Relational Artificial Intelligence: Logic, Probability,
+  and Computation},
+(\byear{Morgan \& Claypool, 2016})
+\end{bbook}
+\endbibitem
+
+%%% 28
+\bibitem{vzakova2007exploiting}
+\begin{bchapter}
+\bauthor{\bsnm{{\v{Z}}{\'a}kov{\'a}}, \binits{M.}},
+\bauthor{\bsnm{{\v{Z}}elezn{\'y}}, \binits{F.}}:
+\bctitle{Exploiting term, predicate, and feature taxonomies in
+  propositionalization and propositional rule learning}.
+In: \bbtitle{European Conference on Machine Learning},
+pp. \bfpage{798}--\blpage{805}
+(\byear{2007}).
+\bcomment{Springer}
+\end{bchapter}
+\endbibitem
+
+%%% 29
+\bibitem{svatovs2017pruning}
+\begin{bchapter}
+\bauthor{\bsnm{Svato{\v{s}}}, \binits{M.}},
+\bauthor{\bsnm{{\v{S}}ourek}, \binits{G.}},
+\bauthor{\bsnm{{\v{Z}}elezn{\`y}}, \binits{F.}},
+\bauthor{\bsnm{Schockaert}, \binits{S.}},
+\bauthor{\bsnm{Ku{\v{z}}elka}, \binits{O.}}:
+\bctitle{Pruning hypothesis spaces using learned domain theories}.
+In: \bbtitle{International Conference on Inductive Logic Programming},
+pp. \bfpage{152}--\blpage{168}
+(\byear{2017}).
+\bcomment{Springer}
+\end{bchapter}
+\endbibitem
+
+%%% 30
+\bibitem{russelNorvig2003:aima}
+\begin{bbook}
+\bauthor{\bsnm{Russell}, \binits{S.J.}},
+\bauthor{\bsnm{Norvig}, \binits{P.}}:
+\bbtitle{Artificial Intelligence: A Modern Approach (2nd Edition)},
+(\byear{{Prentice Hall}, 2002})
+\end{bbook}
+\endbibitem
+
+%%% 31
+\bibitem{jambor2015systematic}
+\begin{botherref}
+\oauthor{\bsnm{Jambor}, \binits{H.}},
+\oauthor{\bsnm{Surendranath}, \binits{V.}},
+\oauthor{\bsnm{Kalinka}, \binits{A.T.}},
+\oauthor{\bsnm{Mejstrik}, \binits{P.}},
+\oauthor{\bsnm{Saalfeld}, \binits{S.}},
+\oauthor{\bsnm{Tomancak}, \binits{P.}}:
+Systematic imaging reveals features and changing localization of mrnas in
+  drosophila development.
+Elife
+\textbf{4}
+(2015)
+\end{botherref}
+\endbibitem
+
+%%% 32
+\bibitem{dot}
+\begin{botherref}
+{Dresden Ovary Table}.
+\url{http://tomancak-srv1.mpi-cbg.de/DOT/main}.
+[Online; accessed 15-February-2016]
+\end{botherref}
+\endbibitem
+
+%%% 33
+\bibitem{borovec2016binary}
+\begin{bchapter}
+\bauthor{\bsnm{Borovec}, \binits{J.}},
+\bauthor{\bsnm{Kybic}, \binits{J.}}:
+\bctitle{Binary pattern dictionary learning for gene expression representation
+  in drosophila imaginal discs}.
+In: \bbtitle{Asian Conference on Computer Vision},
+pp. \bfpage{555}--\blpage{569}
+(\byear{2016}).
+\bcomment{Springer}
+\end{bchapter}
+\endbibitem
+
+%%% 34
+\bibitem{merkin2012evolutionary}
+\begin{barticle}
+\bauthor{\bsnm{Merkin}, \binits{J.}},
+\bauthor{\bsnm{Russell}, \binits{C.}},
+\bauthor{\bsnm{Chen}, \binits{P.}},
+\bauthor{\bsnm{Burge}, \binits{C.B.}}:
+\batitle{Evolutionary dynamics of gene and isoform regulation in mammalian
+  tissues}.
+\bjtitle{Science}
+\bvolume{338}(\bissue{6114}),
+\bfpage{1593}--\blpage{1599}
+(\byear{2012})
+\end{barticle}
+\endbibitem
+
+%%% 35
+\bibitem{zooma}
+\begin{botherref}
+{ZOOMA}.
+\url{https://www.ebi.ac.uk/spot/zooma/}.
+[Online; accessed 30-April-2018]
+\end{botherref}
+\endbibitem
+
+%%% 36
+\bibitem{michalski1969quasi}
+\begin{botherref}
+\oauthor{\bsnm{Michalski}, \binits{R.S.}}:
+On the quasi-minimal solution of the general covering problem
+(1969)
+\end{botherref}
+\endbibitem
+
+%%% 37
+\bibitem{costa2013drosophila}
+\begin{barticle}
+\bauthor{\bsnm{Costa}, \binits{M.}},
+\bauthor{\bsnm{Reeve}, \binits{S.}},
+\bauthor{\bsnm{Grumbling}, \binits{G.}},
+\bauthor{\bsnm{Osumi-Sutherland}, \binits{D.}}:
+\batitle{The drosophila anatomy ontology}.
+\bjtitle{Journal of biomedical semantics}
+\bvolume{4}(\bissue{1}),
+\bfpage{32}
+(\byear{2013})
+\end{barticle}
+\endbibitem
+
+%%% 38
+\bibitem{petryszak2015expression}
+\begin{barticle}
+\bauthor{\bsnm{Petryszak}, \binits{R.}},
+\bauthor{\bsnm{Keays}, \binits{M.}},
+\bauthor{\bsnm{Tang}, \binits{Y.A.}},
+\bauthor{\bsnm{Fonseca}, \binits{N.A.}},
+\bauthor{\bsnm{Barrera}, \binits{E.}},
+\bauthor{\bsnm{Burdett}, \binits{T.}},
+\bauthor{\bsnm{F{\"u}llgrabe}, \binits{A.}},
+\bauthor{\bsnm{Fuentes}, \binits{A.M.-P.}},
+\bauthor{\bsnm{Jupp}, \binits{S.}},
+\bauthor{\bsnm{Koskinen}, \binits{S.}}, \betal:
+\batitle{Expression atlas update—an integrated database of gene and protein
+  expression in humans, animals and plants}.
+\bjtitle{Nucleic acids research}
+\bvolume{44}(\bissue{D1}),
+\bfpage{746}--\blpage{752}
+(\byear{2015})
+\end{barticle}
+\endbibitem
+
+%%% 39
+\bibitem{malone2010modeling}
+\begin{barticle}
+\bauthor{\bsnm{Malone}, \binits{J.}},
+\bauthor{\bsnm{Holloway}, \binits{E.}},
+\bauthor{\bsnm{Adamusiak}, \binits{T.}},
+\bauthor{\bsnm{Kapushesky}, \binits{M.}},
+\bauthor{\bsnm{Zheng}, \binits{J.}},
+\bauthor{\bsnm{Kolesnikov}, \binits{N.}},
+\bauthor{\bsnm{Zhukova}, \binits{A.}},
+\bauthor{\bsnm{Brazma}, \binits{A.}},
+\bauthor{\bsnm{Parkinson}, \binits{H.}}:
+\batitle{Modeling sample variables with an experimental factor ontology}.
+\bjtitle{Bioinformatics}
+\bvolume{26}(\bissue{8}),
+\bfpage{1112}--\blpage{1118}
+(\byear{2010})
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}
+
+\newcommand{\BMCxmlcomment}[1]{}
+
+\BMCxmlcomment{
+
+<refgrp>
+
+<bibl id="B1">
+  <title><p>Ontology-based knowledge representation for
+  bioinformatics</p></title>
+  <aug>
+    <au><snm>Stevens</snm><fnm>R</fnm></au>
+    <au><snm>Goble</snm><fnm>CA</fnm></au>
+    <au><snm>Bechhofer</snm><fnm>S</fnm></au>
+  </aug>
+  <source>Briefings in bioinformatics</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2000</pubdate>
+  <volume>1</volume>
+  <issue>4</issue>
+  <fpage>398</fpage>
+  <lpage>-414</lpage>
+</bibl>
+
+<bibl id="B2">
+  <title><p>Integrative analysis of omics data</p></title>
+  <aug>
+    <au><snm>{\"O}sterlund</snm><fnm>T</fnm></au>
+    <au><snm>Cvijovic</snm><fnm>M</fnm></au>
+    <au><snm>Kristiansson</snm><fnm>E</fnm></au>
+  </aug>
+  <source>Systems biology</source>
+  <publisher>Wiley Online Library</publisher>
+  <pubdate>2017</pubdate>
+  <volume>6</volume>
+  <fpage>1</fpage>
+</bibl>
+
+<bibl id="B3">
+  <title><p>More effort—more results: recent advances in integrative
+  ‘omics’ data analysis</p></title>
+  <aug>
+    <au><snm>Rajasundaram</snm><fnm>D</fnm></au>
+    <au><snm>Selbig</snm><fnm>J</fnm></au>
+  </aug>
+  <source>Current opinion in plant biology</source>
+  <publisher>Elsevier</publisher>
+  <pubdate>2016</pubdate>
+  <volume>30</volume>
+  <fpage>57</fpage>
+  <lpage>-61</lpage>
+</bibl>
+
+<bibl id="B4">
+  <title><p>The OBO Foundry: coordinated evolution of ontologies to support
+  biomedical data integration</p></title>
+  <aug>
+    <au><snm>Smith</snm><fnm>B</fnm></au>
+    <au><snm>Ashburner</snm><fnm>M</fnm></au>
+    <au><snm>Rosse</snm><fnm>C</fnm></au>
+    <au><snm>Bard</snm><fnm>J</fnm></au>
+    <au><snm>Bug</snm><fnm>W</fnm></au>
+    <au><snm>Ceusters</snm><fnm>W</fnm></au>
+    <au><snm>Goldberg</snm><fnm>LJ</fnm></au>
+    <au><snm>Eilbeck</snm><fnm>K</fnm></au>
+    <au><snm>Ireland</snm><fnm>A</fnm></au>
+    <au><snm>Mungall</snm><fnm>CJ</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Nature biotechnology</source>
+  <publisher>Nature Publishing Group</publisher>
+  <pubdate>2007</pubdate>
+  <volume>25</volume>
+  <issue>11</issue>
+  <fpage>1251</fpage>
+</bibl>
+
+<bibl id="B5">
+  <title><p>Gene set enrichment analysis: a knowledge-based approach for
+  interpreting genome-wide expression profiles</p></title>
+  <aug>
+    <au><snm>Subramanian</snm><fnm>A</fnm></au>
+    <au><snm>Tamayo</snm><fnm>P</fnm></au>
+    <au><snm>Mootha</snm><fnm>VK</fnm></au>
+    <au><snm>Mukherjee</snm><fnm>S</fnm></au>
+    <au><snm>Ebert</snm><fnm>BL</fnm></au>
+    <au><snm>Gillette</snm><fnm>MA</fnm></au>
+    <au><snm>Paulovich</snm><fnm>A</fnm></au>
+    <au><snm>Pomeroy</snm><fnm>SL</fnm></au>
+    <au><snm>Golub</snm><fnm>TR</fnm></au>
+    <au><snm>Lander</snm><fnm>ES</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Proceedings of the National Academy of Sciences</source>
+  <publisher>National Acad Sciences</publisher>
+  <pubdate>2005</pubdate>
+  <volume>102</volume>
+  <issue>43</issue>
+  <fpage>15545</fpage>
+  <lpage>-15550</lpage>
+</bibl>
+
+<bibl id="B6">
+  <title><p>Gene Ontology: tool for the unification of biology</p></title>
+  <aug>
+    <au><snm>Ashburner</snm><fnm>M</fnm></au>
+    <au><snm>Ball</snm><fnm>CA</fnm></au>
+    <au><snm>Blake</snm><fnm>JA</fnm></au>
+    <au><snm>Botstein</snm><fnm>D</fnm></au>
+    <au><snm>Butler</snm><fnm>H</fnm></au>
+    <au><snm>Cherry</snm><fnm>JM</fnm></au>
+    <au><snm>Davis</snm><fnm>AP</fnm></au>
+    <au><snm>Dolinski</snm><fnm>K</fnm></au>
+    <au><snm>Dwight</snm><fnm>SS</fnm></au>
+    <au><snm>Eppig</snm><fnm>JT</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Nature genetics</source>
+  <publisher>Nature Publishing Group</publisher>
+  <pubdate>2000</pubdate>
+  <volume>25</volume>
+  <issue>1</issue>
+  <fpage>25</fpage>
+</bibl>
+
+<bibl id="B7">
+  <title><p>Expansion of the Gene Ontology knowledgebase and
+  resources</p></title>
+  <aug>
+    <au><snm>Consortium</snm><fnm>GO</fnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2016</pubdate>
+  <volume>45</volume>
+  <issue>D1</issue>
+  <fpage>D331</fpage>
+  <lpage>-D338</lpage>
+</bibl>
+
+<bibl id="B8">
+  <title><p>Pathways to the analysis of microarray data</p></title>
+  <aug>
+    <au><snm>Curtis</snm><fnm>RK</fnm></au>
+    <au><snm>Ore{\v{s}}i{\v{c}}</snm><fnm>M</fnm></au>
+    <au><snm>Vidal Puig</snm><fnm>A</fnm></au>
+  </aug>
+  <source>TRENDS in Biotechnology</source>
+  <publisher>Elsevier</publisher>
+  <pubdate>2005</pubdate>
+  <volume>23</volume>
+  <issue>8</issue>
+  <fpage>429</fpage>
+  <lpage>-435</lpage>
+</bibl>
+
+<bibl id="B9">
+  <title><p>KEGG: new perspectives on genomes, pathways, diseases and
+  drugs</p></title>
+  <aug>
+    <au><snm>Kanehisa</snm><fnm>M</fnm></au>
+    <au><snm>Furumichi</snm><fnm>M</fnm></au>
+    <au><snm>Tanabe</snm><fnm>M</fnm></au>
+    <au><snm>Sato</snm><fnm>Y</fnm></au>
+    <au><snm>Morishima</snm><fnm>K</fnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2016</pubdate>
+  <volume>45</volume>
+  <issue>D1</issue>
+  <fpage>D353</fpage>
+  <lpage>-D361</lpage>
+</bibl>
+
+<bibl id="B10">
+  <title><p>KEGG as a reference resource for gene and protein
+  annotation</p></title>
+  <aug>
+    <au><snm>Kanehisa</snm><fnm>M</fnm></au>
+    <au><snm>Sato</snm><fnm>Y</fnm></au>
+    <au><snm>Kawashima</snm><fnm>M</fnm></au>
+    <au><snm>Furumichi</snm><fnm>M</fnm></au>
+    <au><snm>Tanabe</snm><fnm>M</fnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2015</pubdate>
+  <volume>44</volume>
+  <issue>D1</issue>
+  <fpage>D457</fpage>
+  <lpage>-D462</lpage>
+</bibl>
+
+<bibl id="B11">
+  <title><p>KEGG: kyoto encyclopedia of genes and genomes</p></title>
+  <aug>
+    <au><snm>Kanehisa</snm><fnm>M</fnm></au>
+    <au><snm>Goto</snm><fnm>S</fnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2000</pubdate>
+  <volume>28</volume>
+  <issue>1</issue>
+  <fpage>27</fpage>
+  <lpage>-30</lpage>
+</bibl>
+
+<bibl id="B12">
+  <title><p>The Reactome pathway knowledgebase</p></title>
+  <aug>
+    <au><snm>Croft</snm><fnm>D</fnm></au>
+    <au><snm>Mundo</snm><fnm>AF</fnm></au>
+    <au><snm>Haw</snm><fnm>R</fnm></au>
+    <au><snm>Milacic</snm><fnm>M</fnm></au>
+    <au><snm>Weiser</snm><fnm>J</fnm></au>
+    <au><snm>Wu</snm><fnm>G</fnm></au>
+    <au><snm>Caudy</snm><fnm>M</fnm></au>
+    <au><snm>Garapati</snm><fnm>P</fnm></au>
+    <au><snm>Gillespie</snm><fnm>M</fnm></au>
+    <au><snm>Kamdar</snm><fnm>MR</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2013</pubdate>
+  <volume>42</volume>
+  <issue>D1</issue>
+  <fpage>D472</fpage>
+  <lpage>-D477</lpage>
+</bibl>
+
+<bibl id="B13">
+  <title><p>Foundations of Rule Learning</p></title>
+  <aug>
+    <au><snm>Fuerkranz</snm><fnm>J</fnm></au>
+    <au><snm>Gamberger</snm><fnm>D</fnm></au>
+    <au><snm>Lavrac</snm><fnm>N</fnm></au>
+  </aug>
+  <pubdate>Springer, 2012</pubdate>
+</bibl>
+
+<bibl id="B14">
+  <title><p>Supervised machine learning: A review of classification
+  techniques</p></title>
+  <aug>
+    <au><snm>Kotsiantis</snm><fnm>SB</fnm></au>
+    <au><snm>Zaharakis</snm><fnm>I</fnm></au>
+    <au><snm>Pintelas</snm><fnm>P</fnm></au>
+  </aug>
+  <source>Emerging artificial intelligence applications in computer
+  engineering</source>
+  <pubdate>2007</pubdate>
+  <volume>160</volume>
+  <fpage>3</fpage>
+  <lpage>-24</lpage>
+</bibl>
+
+<bibl id="B15">
+  <title><p>Learning rule-based models of biological process from gene
+  expression time profiles using gene ontology</p></title>
+  <aug>
+    <au><snm>Hvidsten</snm><fnm>TR</fnm></au>
+    <au><snm>L{\ae}greid</snm><fnm>A</fnm></au>
+    <au><snm>Komorowski</snm><fnm>J</fnm></au>
+  </aug>
+  <source>Bioinformatics</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2003</pubdate>
+  <volume>19</volume>
+  <issue>9</issue>
+  <fpage>1116</fpage>
+  <lpage>-1123</lpage>
+</bibl>
+
+<bibl id="B16">
+  <title><p>Machine learning biochemical networks from temporal logic
+  properties</p></title>
+  <aug>
+    <au><snm>Calzone</snm><fnm>L</fnm></au>
+    <au><snm>Chabrier Rivier</snm><fnm>N</fnm></au>
+    <au><snm>Fages</snm><fnm>F</fnm></au>
+    <au><snm>Soliman</snm><fnm>S</fnm></au>
+  </aug>
+  <source>Transactions on Computational Systems Biology VI</source>
+  <publisher>Springer</publisher>
+  <pubdate>2006</pubdate>
+  <fpage>68</fpage>
+  <lpage>-94</lpage>
+</bibl>
+
+<bibl id="B17">
+  <title><p>Predictive data mining in clinical medicine: current issues and
+  guidelines</p></title>
+  <aug>
+    <au><snm>Bellazzi</snm><fnm>R</fnm></au>
+    <au><snm>Zupan</snm><fnm>B</fnm></au>
+  </aug>
+  <source>International journal of medical informatics</source>
+  <publisher>Elsevier</publisher>
+  <pubdate>2008</pubdate>
+  <volume>77</volume>
+  <issue>2</issue>
+  <fpage>81</fpage>
+  <lpage>-97</lpage>
+</bibl>
+
+<bibl id="B18">
+  <title><p>Disease Ontology: a backbone for disease semantic
+  integration</p></title>
+  <aug>
+    <au><snm>Schriml</snm><fnm>LM</fnm></au>
+    <au><snm>Arze</snm><fnm>C</fnm></au>
+    <au><snm>Nadendla</snm><fnm>S</fnm></au>
+    <au><snm>Chang</snm><fnm>YWW</fnm></au>
+    <au><snm>Mazaitis</snm><fnm>M</fnm></au>
+    <au><snm>Felix</snm><fnm>V</fnm></au>
+    <au><snm>Feng</snm><fnm>G</fnm></au>
+    <au><snm>Kibbe</snm><fnm>WA</fnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2011</pubdate>
+  <volume>40</volume>
+  <issue>D1</issue>
+  <fpage>D940</fpage>
+  <lpage>-D946</lpage>
+</bibl>
+
+<bibl id="B19">
+  <title><p>Disease Ontology 2015 update: an expanded and updated database of
+  human diseases for linking biomedical knowledge through disease
+  data</p></title>
+  <aug>
+    <au><snm>Kibbe</snm><fnm>WA</fnm></au>
+    <au><snm>Arze</snm><fnm>C</fnm></au>
+    <au><snm>Felix</snm><fnm>V</fnm></au>
+    <au><snm>Mitraka</snm><fnm>E</fnm></au>
+    <au><snm>Bolton</snm><fnm>E</fnm></au>
+    <au><snm>Fu</snm><fnm>G</fnm></au>
+    <au><snm>Mungall</snm><fnm>CJ</fnm></au>
+    <au><snm>Binder</snm><fnm>JX</fnm></au>
+    <au><snm>Malone</snm><fnm>J</fnm></au>
+    <au><snm>Vasant</snm><fnm>D</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2014</pubdate>
+  <volume>43</volume>
+  <issue>D1</issue>
+  <fpage>D1071</fpage>
+  <lpage>-D1078</lpage>
+</bibl>
+
+<bibl id="B20">
+  <title><p>WordNet: a lexical database for English</p></title>
+  <aug>
+    <au><snm>Miller</snm><fnm>GA</fnm></au>
+  </aug>
+  <source>Communications of the ACM</source>
+  <publisher>ACM</publisher>
+  <pubdate>1995</pubdate>
+  <volume>38</volume>
+  <issue>11</issue>
+  <fpage>39</fpage>
+  <lpage>-41</lpage>
+</bibl>
+
+<bibl id="B21">
+  <title><p>Yago: a core of semantic knowledge</p></title>
+  <aug>
+    <au><snm>Suchanek</snm><fnm>FM</fnm></au>
+    <au><snm>Kasneci</snm><fnm>G</fnm></au>
+    <au><snm>Weikum</snm><fnm>G</fnm></au>
+  </aug>
+  <source>Proceedings of the 16th international conference on World Wide
+  Web</source>
+  <pubdate>2007</pubdate>
+  <fpage>697</fpage>
+  <lpage>-706</lpage>
+</bibl>
+
+<bibl id="B22">
+  <title><p>The CN2 induction algorithm</p></title>
+  <aug>
+    <au><snm>Clark</snm><fnm>P</fnm></au>
+    <au><snm>Niblett</snm><fnm>T</fnm></au>
+  </aug>
+  <source>Machine learning</source>
+  <publisher>Springer</publisher>
+  <pubdate>1989</pubdate>
+  <volume>3</volume>
+  <issue>4</issue>
+  <fpage>261</fpage>
+  <lpage>-283</lpage>
+</bibl>
+
+<bibl id="B23">
+  <title><p>Fast effective rule induction</p></title>
+  <aug>
+    <au><snm>Cohen</snm><fnm>WW</fnm></au>
+  </aug>
+  <source>Machine Learning Proceedings 1995</source>
+  <publisher>Elsevier</publisher>
+  <pubdate>1995</pubdate>
+  <fpage>115</fpage>
+  <lpage>-123</lpage>
+</bibl>
+
+<bibl id="B24">
+  <title><p>Semantic biclustering for finding local, interpretable and
+  predictive expression patterns</p></title>
+  <aug>
+    <au><snm>Kl{\'e}ma</snm><fnm>J</fnm></au>
+    <au><snm>Malinka</snm><fnm>F</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>BMC genomics</source>
+  <publisher>BioMed Central</publisher>
+  <pubdate>2017</pubdate>
+  <volume>18</volume>
+  <issue>7</issue>
+  <fpage>41</fpage>
+</bibl>
+
+<bibl id="B25">
+  <title><p>Rule induction with CN2: Some recent improvements</p></title>
+  <aug>
+    <au><snm>Clark</snm><fnm>P</fnm></au>
+    <au><snm>Boswell</snm><fnm>R</fnm></au>
+  </aug>
+  <source>European Working Session on Learning</source>
+  <pubdate>1991</pubdate>
+  <fpage>151</fpage>
+  <lpage>-163</lpage>
+</bibl>
+
+<bibl id="B26">
+  <title><p>Bump hunting in high-dimensional data</p></title>
+  <aug>
+    <au><snm>Friedman</snm><fnm>JH</fnm></au>
+    <au><snm>Fisher</snm><fnm>NI</fnm></au>
+  </aug>
+  <source>Statistics and Computing</source>
+  <publisher>Springer</publisher>
+  <pubdate>1999</pubdate>
+  <volume>9</volume>
+  <issue>2</issue>
+  <fpage>123</fpage>
+  <lpage>-143</lpage>
+</bibl>
+
+<bibl id="B27">
+  <title><p>Statistical Relational Artificial Intelligence: Logic, Probability,
+  and Computation</p></title>
+  <aug>
+    <au><snm>{De Raedt}</snm><fnm>L</fnm></au>
+  </aug>
+  <pubdate>Morgan \& Claypool, 2016</pubdate>
+</bibl>
+
+<bibl id="B28">
+  <title><p>Exploiting term, predicate, and feature taxonomies in
+  propositionalization and propositional rule learning</p></title>
+  <aug>
+    <au><snm>{\v{Z}}{\'a}kov{\'a}</snm><fnm>M</fnm></au>
+    <au><snm>{\v{Z}}elezn{\'y}</snm><fnm>F</fnm></au>
+  </aug>
+  <source>European Conference on Machine Learning</source>
+  <pubdate>2007</pubdate>
+  <fpage>798</fpage>
+  <lpage>-805</lpage>
+</bibl>
+
+<bibl id="B29">
+  <title><p>Pruning Hypothesis Spaces Using Learned Domain Theories</p></title>
+  <aug>
+    <au><snm>Svato{\v{s}}</snm><fnm>M</fnm></au>
+    <au><snm>{\v{S}}ourek</snm><fnm>G</fnm></au>
+    <au><snm>{\v{Z}}elezn{\`y}</snm><fnm>F</fnm></au>
+    <au><snm>Schockaert</snm><fnm>S</fnm></au>
+    <au><snm>Ku{\v{z}}elka</snm><fnm>O</fnm></au>
+  </aug>
+  <source>International Conference on Inductive Logic Programming</source>
+  <pubdate>2017</pubdate>
+  <fpage>152</fpage>
+  <lpage>-168</lpage>
+</bibl>
+
+<bibl id="B30">
+  <title><p>Artificial Intelligence: A Modern Approach (2nd
+  Edition)</p></title>
+  <aug>
+    <au><snm>Russell</snm><fnm>SJ</fnm></au>
+    <au><snm>Norvig</snm><fnm>P</fnm></au>
+  </aug>
+  <pubdate>{Prentice Hall}, 2002</pubdate>
+</bibl>
+
+<bibl id="B31">
+  <title><p>Systematic imaging reveals features and changing localization of
+  mRNAs in Drosophila development</p></title>
+  <aug>
+    <au><snm>Jambor</snm><fnm>H</fnm></au>
+    <au><snm>Surendranath</snm><fnm>V</fnm></au>
+    <au><snm>Kalinka</snm><fnm>AT</fnm></au>
+    <au><snm>Mejstrik</snm><fnm>P</fnm></au>
+    <au><snm>Saalfeld</snm><fnm>S</fnm></au>
+    <au><snm>Tomancak</snm><fnm>P</fnm></au>
+  </aug>
+  <source>Elife</source>
+  <publisher>eLife Sciences Publications, Ltd</publisher>
+  <pubdate>2015</pubdate>
+  <volume>4</volume>
+</bibl>
+
+<bibl id="B32">
+  <title><p>{Dresden Ovary Table}</p></title>
+  <source>\url{http://tomancak-srv1.mpi-cbg.de/DOT/main}</source>
+  <note>[Online; accessed 15-February-2016]</note>
+</bibl>
+
+<bibl id="B33">
+  <title><p>Binary pattern dictionary learning for gene expression
+  representation in drosophila imaginal discs</p></title>
+  <aug>
+    <au><snm>Borovec</snm><fnm>J</fnm></au>
+    <au><snm>Kybic</snm><fnm>J</fnm></au>
+  </aug>
+  <source>Asian Conference on Computer Vision</source>
+  <pubdate>2016</pubdate>
+  <fpage>555</fpage>
+  <lpage>-569</lpage>
+</bibl>
+
+<bibl id="B34">
+  <title><p>Evolutionary dynamics of gene and isoform regulation in Mammalian
+  tissues</p></title>
+  <aug>
+    <au><snm>Merkin</snm><fnm>J</fnm></au>
+    <au><snm>Russell</snm><fnm>C</fnm></au>
+    <au><snm>Chen</snm><fnm>P</fnm></au>
+    <au><snm>Burge</snm><fnm>CB</fnm></au>
+  </aug>
+  <source>Science</source>
+  <publisher>American Association for the Advancement of Science</publisher>
+  <pubdate>2012</pubdate>
+  <volume>338</volume>
+  <issue>6114</issue>
+  <fpage>1593</fpage>
+  <lpage>-1599</lpage>
+</bibl>
+
+<bibl id="B35">
+  <title><p>{ZOOMA}</p></title>
+  <source>\url{https://www.ebi.ac.uk/spot/zooma/}</source>
+  <note>[Online; accessed 30-April-2018]</note>
+</bibl>
+
+<bibl id="B36">
+  <title><p>On the quasi-minimal solution of the general covering
+  problem</p></title>
+  <aug>
+    <au><snm>Michalski</snm><fnm>RS</fnm></au>
+  </aug>
+  <pubdate>1969</pubdate>
+</bibl>
+
+<bibl id="B37">
+  <title><p>The Drosophila anatomy ontology</p></title>
+  <aug>
+    <au><snm>Costa</snm><fnm>M</fnm></au>
+    <au><snm>Reeve</snm><fnm>S</fnm></au>
+    <au><snm>Grumbling</snm><fnm>G</fnm></au>
+    <au><snm>Osumi Sutherland</snm><fnm>D</fnm></au>
+  </aug>
+  <source>Journal of biomedical semantics</source>
+  <publisher>BioMed Central</publisher>
+  <pubdate>2013</pubdate>
+  <volume>4</volume>
+  <issue>1</issue>
+  <fpage>32</fpage>
+</bibl>
+
+<bibl id="B38">
+  <title><p>Expression Atlas update—an integrated database of gene and
+  protein expression in humans, animals and plants</p></title>
+  <aug>
+    <au><snm>Petryszak</snm><fnm>R</fnm></au>
+    <au><snm>Keays</snm><fnm>M</fnm></au>
+    <au><snm>Tang</snm><fnm>YA</fnm></au>
+    <au><snm>Fonseca</snm><fnm>NA</fnm></au>
+    <au><snm>Barrera</snm><fnm>E</fnm></au>
+    <au><snm>Burdett</snm><fnm>T</fnm></au>
+    <au><snm>F{\"u}llgrabe</snm><fnm>A</fnm></au>
+    <au><snm>Fuentes</snm><fnm>AMP</fnm></au>
+    <au><snm>Jupp</snm><fnm>S</fnm></au>
+    <au><snm>Koskinen</snm><fnm>S</fnm></au>
+    <au><cnm>others</cnm></au>
+  </aug>
+  <source>Nucleic acids research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2015</pubdate>
+  <volume>44</volume>
+  <issue>D1</issue>
+  <fpage>D746</fpage>
+  <lpage>-D752</lpage>
+</bibl>
+
+<bibl id="B39">
+  <title><p>Modeling sample variables with an Experimental Factor
+  Ontology</p></title>
+  <aug>
+    <au><snm>Malone</snm><fnm>J</fnm></au>
+    <au><snm>Holloway</snm><fnm>E</fnm></au>
+    <au><snm>Adamusiak</snm><fnm>T</fnm></au>
+    <au><snm>Kapushesky</snm><fnm>M</fnm></au>
+    <au><snm>Zheng</snm><fnm>J</fnm></au>
+    <au><snm>Kolesnikov</snm><fnm>N</fnm></au>
+    <au><snm>Zhukova</snm><fnm>A</fnm></au>
+    <au><snm>Brazma</snm><fnm>A</fnm></au>
+    <au><snm>Parkinson</snm><fnm>H</fnm></au>
+  </aug>
+  <source>Bioinformatics</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2010</pubdate>
+  <volume>26</volume>
+  <issue>8</issue>
+  <fpage>1112</fpage>
+  <lpage>-1118</lpage>
+</bibl>
+
+</refgrp>
+} % end of \BMCxmlcomment

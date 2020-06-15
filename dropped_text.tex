@@ -1,0 +1,110 @@
+
+
+To start with, we formally define two basic concepts: ontology and example as inputs of the proposed algorithm. 
+
+Firstly, assume ontologies as a partial-ordered set $<T,\succeq>$, where $T$ represents a set of all terms that are presented in the given ontologies and $\succeq$ is a binary relation defined in $T$ such that  $(g, s) \in \succeq \subseteq T \times T$. In other words, term $g$ is $\succeq$-related to term $s$. For example, in the context of Gene ontology \cite{ashburner2000gene,gene2016expansion}, we can say that the term \emph{developmental process} is a subtype of term \emph{biological process}, written as (\emph{biological process}, \emph{developmental process}) $\in \succeq$. According to partial-order set definition, the $\succeq$ relation is reflexive, transitive, and antisymmetric. Consequently, ontologies cannot contain any cycles. For a better understanding, we define the following concepts that will be used in this paper later. 
+
+\begin{definition}
+Let $x,y \in T$, $x$ is called a \emph{generalization} of $y$ (or $x$ is more general than $y$) iff $x \succeq y$.
+\end{definition}
+
+\begin{definition}
+ Let $x,y \in T$, $y$ is called a \emph{specialization} of $x$ (or $y$ is more specific than $x$) iff $x \succeq y$.
+\end{definition}
+
+Given these two definitions, we are able to express basic elements defined over ontologies. As an example, we can define all top elements in ontologies. In the context of ontology, top elements correspond to roots, i.e. the terms that do not have any ancestors/more general terms.
+
+
+\begin{example}\label{ex:onto}
+    Let ontology $O = <T,\succeq^{*}>$ be a partial-ordered set that is shown in Fig~\ref{figure:onto1} where $T=\{t0,t1,t2,t3,t4,t5,t6\}$, $\succeq=\{(t0,t1), (t0,t2), (t0,t3), (t1,t4), (t2,t4),$ $(t2,t5), (t3,t5), (t3,t6)\}$, and $\succeq^{*}$ is a reflexive transitive closure of the relation $\succeq$. Then $t0$ is more general than $t1,t2,t3,t4,t5$ and $t6$ and simultaneously $t0$ is a root since there is no other more general term of $t0$.
+    %Then $t1$ is an upward cover of $t4$; $t0$, $t2$, and $t3$ are upper bounds of $\{t5,t6\}$ and $t3$ is the least upper bound of $\{t5,t6\}$.
+\end{example}
+
+%fig1
+
+Secondly, every ontology refers to a certain set of ground level objects. In this work we will call them examples. In the case of gene ontology, the examples could be the set of measured genes, in the case of location ontology it can be the set of body parts from which the measurements come. We define a set of examples $E = E^{+} \cup E^{-}$ where $E^{+}$ represents a set of positive examples (e.g. a set of up-regulated genes or a gene set of interest) and $E^{-}$ represents a set of negative examples (e.g. a set of down-regulated genes or a control gene set). 
+Finally, we define an association between examples and ontology terms and vice versa. These associations are essential for the novel refinement operator and for the two reduction procedures. 
+
+
+Since each example is annotated by a subset of terms from an ontology, we assume a mapping
+\begin{eqnarray}
+\label{eq:mapM}
+	 M :  E \rightarrow \mathcal{P}(T)
+\end{eqnarray}
+
+that maps examples from the set of examples $E$ to elements of the power set of terms $T$ from a given ontology. To illustrate, an example is represented by the Drosophila's gene \emph{Phosphoenolpyruvate carboxykinase} that is annotated by the following Gene ontology terms: \emph{GTP binding}, \emph{phosphoenolpyruvate carboxykinase activity}, \emph{gluconeogenesis}, and \emph{mitochondrion}. In most cases, this mapping function $M$ is defined manually by a user based on their expert knowledge, or automatically by well-known tools that help map a text associated with an example to an ontology as \cite{zooma}.
+
+******************
+
+
+On the other hand, there are associations from terms to examples. For this, we define a reverse mapping
+\begin{eqnarray}
+\label{eq:mapMr}
+M' : T \rightarrow \mathcal{P}(E)
+\end{eqnarray}
+
+that maps elements from the set of terms $T$ to elements of the power set of examples $E$. The formal definition of this function follows: 
+
+\begin{eqnarray}
+\label{eq:mapMline}
+M' (t \in T) = \{\forall e \in E : t \subseteq M(e)\}.
+\end{eqnarray}
+
+\begin{example} \label{ex:2}
+	Suppose the ontology as a partial-order set that is defined in Example \ref{ex:onto}. Let $E = \{e_1, e_2, e_3\}$ be a set of examples, and the mapping $M$, that assigns terms from the ontology $O$ to the specific example, is defined manually in the following way: $M(e_1) = \{t4\}, M(e_2) = \{t5, t6\}, M(e_3) = \{t2\}$.
+	The mapping $M'$ that reversely assigns set of examples to the specific term from the ontology $O$ is following: $M'(t0) = \{\emptyset\}, M'(t1) = \{\emptyset\}, M'(t2) = \{e_3\}, M'(t3) = \{\emptyset\}, M'(t4) = \{e_1\}, M'(t5) = \{e_2\}, M'(t6) = \{e_2\}$.
+\end{example}
+--
+
+\begin{example}\label{ex:3}
+	Consider the ontology $O$ from Example \ref{ex:onto}, $M$ and $M'$ from Example \ref{ex:2}. We apply $S$ to each term in $O$, i.e.
+	$$S(t4) = M'(t4) = \{e1\}$$
+	$$S(t5) = M'(t5) = \{e2\}$$
+	$$S(t6) = M'(t6) = \{e2\}$$
+	$$S(t1) = M'(t1) \cup M'(t4) = \{e1\}$$
+	$$S(t2) = M'(t2) \cup M'(t4) \cup M'(t5) = \{e1, e2, e3\}$$
+	$$S(t3) = M'(t3) \cup M'(t5) \cup M'(t6) = \{e2\}$$
+	$$S(t0) = M'(t0) \cup M'(t1) \cup \cdots \cup M'(t6) = \{e1, e2, e3\}$$
+	
+\end{example}
+The result of this operation is shown in Fig \ref{figure:onto2}. In this example, the most general term $t0$ named as \emph{biological process} is associated with all examples in $E$, i.e. $e1$, $e2$, and $e3$. Intuitively, this is an expected result since other terms (\emph{cellular process}, \emph{single-organism process}, \emph{developmental process}, \emph{single-organism cellular process}, \emph{single-organism developmental process}, and \emph{anatomical structure development}) are also a \emph{biological process} thanks to the $\succeq^{*}$-relation. In other words, the most general term is associated with all examples that are associated with all specializations of that term.
+
+
+Before we introduce a rule space and a corresponding form of rules, we formulate a cover operator $\Theta$. The cover operator determines which examples satisfy a rule condition, and we say that the rule covers such examples. Formally, $\Theta$ is a mapping from a power set of terms $T$ to a power set of examples $E$, i.e.
+
+\begin{eqnarray}
+\label{eq:thetamap}
+\Theta : \mathcal{P}(T) \rightarrow \mathcal{P}(E)
+\end{eqnarray}
+%$$\Theta : \mathcal{P}(T) \rightarrow \mathcal{P}(E)$$
+and is defined in the following form:
+\begin{eqnarray} \label{eq:cover}
+\Theta (T_{r} \subseteq T) = \bigcap\limits_{t \in T_{r}} S(t) .
+\end{eqnarray}
+
+
+The cover operator $\Theta$ takes a set of terms and returns all the examples concurrently annotated by all the terms from this set. The cover is applied after the annotation propagation step mentioned above.
+
+***********
+
+
+
+Rule space $\mathcal{R} = <R, \succeq_{r}>$ is defined as a quasi-ordered set where $R$ represents a set of rules and a binary relation $\succeq_{r}$ such that $\succeq_{r} \subseteq R \times R$ is reflexive and transitive. Further, the rule syntax is restricted on a conjunction of positive terms. For the sake of simplicity, we omit a propositional logic notation of rules and represent the conjunction of positive terms as a set of terms, i.e. propositional logic notation of rule $t1 \wedge t3 \wedge t4$ is represented as $\{t1,t3,t4\}$. Notice that conjunctive interpretation corresponds to the definition of cover operator as well.
+
+\begin{example} \label{ex:4}
+	Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, and mapping $S$ from Example \ref{ex:3}. Let rules be $R1=\{t1, t2\}$, $R2=\{t2\}$, and $R3=\{t0\}$. Then $R1$ covers $\Theta(R1) = S(t1) \cap S(t2) = \{e1\} \cap \{e1, e2, e3\} = \{e1\}$. We say that example $e1$ is covered by rule $R1$. Equivalently, $R2$ covers examples $e1, e2, e3$ and $R3$ covers the same set of examples as $R2$.
+\end{example}
+
+
+The binary relation $\succeq_{r}$ is defined in the set of rules $R$ as follows:
+
+\begin{eqnarray} \label{eq:forder}
+R_{f}1 \succeq_{r}  R_{f}2 \iff  \Theta(R_{f}2) \subseteq \Theta(R_{f}1)
+\end{eqnarray}
+where  $R_{f}1, R_{f}2 \in R$.
+
+\begin{example} \label{ex:5}
+	Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, mapping $S$ from Example \ref{ex:3}, and rules from Example \ref{ex:4}. Then the relations between rules are as follows: $R2 \succeq_{r} R1$, $R3 \succeq_{r} R1$, $R3 \succeq_{r} R2$ and $R2 \succeq_{r} R3$. 
+\end{example}
+
+

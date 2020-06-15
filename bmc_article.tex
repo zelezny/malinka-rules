@@ -197,10 +197,10 @@
 \begin{abstractbox}
 \begin{abstract} % abstract
 \parttitle{Background}
-Identification of non-trivial and meaningful patterns in omics data is one of the most important biological tasks. The patterns help to better understand  biological systems and interpret the experimental outcomes. To illustrate, a well-established method serving to explain the biological data is Gene Set Enrichment Analysis. However, this tool is restricted to a very specific type of evaluation. A sorted list of genes must be provided and is annotated with the set of terms enriched in the gene list. Here, in contrary to enrichment analysis, we introduce a new tool/framework that allows for the induction of more complex patterns \textcolor{red}{of 2-dimensional binary omics data. This extension allows to discover and describe semantically coherent biclusters.}\st{, which extends its applicability on various types of omics data}.
+Identification of non-trivial and meaningful patterns in omics data is one of the most important biological tasks. The patterns help to better understand biological systems and interpret experimental outcomes. A well-established method serving to explain such biological data is Gene Set Enrichment Analysis. However, this type of analysis is restricted to a specific type of evaluation. Abstracting from details, the analyst provides a sorted list of genes and ontological annotations of the individual genes; the method outputs a subset of ontological terms enriched in the gene list. Here, in contrary to enrichment analysis, we introduce a new tool/framework that allows for the induction of more complex patterns of 2-dimensional binary omics data. This extension allows to discover and describe semantically coherent biclusters.
 
 \parttitle{Results}
-We present a new rapid method called sem1R that reveals interpretable hidden rules in omics data. These rules capture semantic differences between two classes: a target class as a collection of positive examples and a non-target class containing negative examples. The method is inspired by CN2 rule learner and introduces a new refinement operator that exploits prior knowledge in the form of ontologies. In our work this knowledge serves to create  accurate and interpretable rules. The novel refinement operator uses two reduction procedures: Redundant Generalization and Redundant Non-potential, both of which help to dramatically prune the rule space and consequently, speed-up the entire process of rule induction in comparison with the traditional refinement operator as is presented in CN2.
+We present a new rapid method called sem1R that reveals interpretable hidden rules in omics data. These rules capture semantic differences between two classes: a target class as a collection of positive examples and a non-target class containing negative examples. The method is inspired by the CN2 rule learner and introduces a new refinement operator that exploits prior knowledge in the form of ontologies. In our work this knowledge serves to create  accurate and interpretable rules. The novel refinement operator uses two reduction procedures: Redundant Generalization and Redundant Non-potential, both of which help to dramatically prune the rule space and consequently, speed-up the entire process of rule induction in comparison with the traditional refinement operator as is presented in CN2.
 \parttitle{Conclusions}
 Efficiency and effectivity of the novel refinement operator were tested on three real different gene expression datasets. Concretely, the Dresden Ovary Dataset, DISC, and m2816 were employed. The experiments show that the ontology-based refinement operator speeds-up the pattern induction drastically. The algorithm is written in C++ and is published as an R package available at http://github.com/fmalinka/sem1r.
 \end{abstract}
@@ -263,8 +263,10 @@ Efficiency and effectivity of the novel refinement operator were tested on three
 %%
 
 \section*{Background}
-Nowadays, omics data analysis that integrates semantics in the form of external prior knowledge with raw measurements is becoming more and more popular in computational biology \cite{stevens2000ontology,osterlund2017integrative,rajasundaram2016more}. A typical example of integrative gene expression data analysis may deliver a direct link between a phenotype and existing annotation terms at different levels of generality. The integration helps scientists to interpret gene expression data easier because it can reveal gene sets that share common biological properties. Semantic data are stored in databases, oftentimes in an ontology format. In this area, an important role is played by The Open Biological and Biomedical Ontology (OBO) Foundry \cite{smith2007obo}, which provides validation and assessment of ontologies to ensure their interoperability. Dozens of ontologies from various biological domains can be downloaded from \emph{http://www.obofoundry.org/}. One of the most popular methods that uses this type of semantics utilizing a connection between ontologies or gene set databases and genes is \emph{enrichment analysis}, \emph{Gene Set Enrichment Analysis} (GSEA) \cite{subramanian2005gene} represents one of its most frequently used implementations. The enrichment analysis identifies a list of significantly enriched ontological terms \st{that are associated with the given set of differentially expressed genes} \textcolor{red}{from provided list of differentially expressed genes that is sorted according by some ranking metric (p-value, log fold change, etc.)}. To discover a certain molecular function or biological process that is shared over the set of differentially expressed genes, Gene Ontology \cite{ashburner2000gene,gene2016expansion} is an appropriate and often used annotation database. In addition, finding enriched biological pathways in gene expression data can be done similarly \cite{curtis2005pathways}, in particular \emph{KEGG}  \cite{kanehisa2016kegg,kanehisa2015kegg,kanehisa2000kegg} and \emph{Reactome} \cite{croft2013reactome} databases are frequently employed in pathway analysis.
+Nowadays, omics data analysis that integrates semantics in the form of external prior knowledge with raw measurements is becoming more and more popular in computational biology \cite{stevens2000ontology,osterlund2017integrative,rajasundaram2016more}. A typical example of integrative gene expression data analysis may deliver a direct link between a phenotype and existing annotation terms at different levels of generality. The integration helps scientists to interpret gene expression data easier because it can reveal gene sets that share common biological properties. Semantic data are stored in databases, oftentimes in an ontology format. In this area, an important role is played by The Open Biological and Biomedical Ontology (OBO) Foundry \cite{smith2007obo}, which provides validation and assessment of ontologies to ensure their interoperability. Dozens of ontologies from various biological domains can be downloaded from \emph{http://www.obofoundry.org/}. 
 
+\subsection*{Gene Set Enrichment Analysis}
+One of the most popular methods that uses this type of semantics utilizing a connection between ontologies or gene set databases and genes is \emph{enrichment analysis}, \emph{Gene Set Enrichment Analysis} (GSEA) \cite{subramanian2005gene} represents one of its most frequently used implementations. The enrichment analysis identifies a list of significantly enriched ontological terms from a provided list of differentially expressed genes that is sorted according by some ranking metric (p-value, log fold change, etc.). To discover a certain molecular function or biological process that is shared over the set of differentially expressed genes, Gene Ontology \cite{ashburner2000gene,gene2016expansion} is an appropriate and often used annotation database.
 An example of GSEA outcome that is induced from data over the KEGG database can be the following: 
 
 \begin{center}
@@ -279,13 +281,15 @@ On the other hand, let $R$ be the following rule:
 \end{center}
 $R$ says that simultaneous occurrence of the terms  \emph{KEGG\_WNT\_SIGNALING\_PATHWAY} and \emph{KEGG\_CELL\_CYCLE} in the annotation of a gene (frequently) leads to its upregulation. The upregulation score for the rule $R$ is computed from a gene set where each gene has to be associated with both terms simultaneously. In our framework, and unlike the traditional enrichment analysis, we will be able to cope with these conjunctive rules.
 
-Moreover, the dimension of biological samples/conditions is disregarded in the enrichment analysis, only the dimension of genes is taken into consideration when constructing annotations. The enrichment analysis supposes a gene set of interest (e.g. genes that are differentially expressed) to be a part of the input. Consequently, these methods can only be applied in such biological experiments, where samples are split into two groups, treatments and controls. However, the treatment and control labels are often not available. In most cases, the split into groups is unclear, the sample groups may overlap or form complex taxonomies. Under these conditions, any set of differentially expressed genes cannot easily be determined. For this reason, we suppose that samples are described with a rich ontology of annotation terms (locations, conditions, complex treatments, etc.) and bring an opportunity to further generalize the rules with extra terms from this ontology that can be added into the rules. This allows for inducing a rule that self-defines the semantically coherent joint groups of genes and samples; the genes tend to be upregulated in the sample group. The induction is fully automated and driven by the context provided in the measurements and annotation ontologies. In other words, GSEA uses a 1-dimensional space of deregulated genes to induce a list of significantly enriched annotation terms. In this work, we expand onto 2-dimensional expression space and consequently allow for generation of hypotheses that represent a set of genes upregulated in a specific set of samples/biological conditions. An example of the hypothesis could be the following rule:
+Moreover, the dimension of biological samples/conditions is disregarded in the enrichment analysis, only the dimension of genes is taken into consideration when constructing annotations. The enrichment analysis supposes a gene set of interest (e.g. genes that are differentially expressed) to be a part of the input. Consequently, these methods can only be applied in such biological experiments, where samples are split into two groups, treatments and controls. However, the treatment and control labels are often not available. In most cases, the split into groups is unclear, the sample groups may overlap or form complex taxonomies. Under these conditions, any set of differentially expressed genes cannot easily be determined. For this reason, we suppose that samples are described with a rich ontology of annotation terms (locations, conditions, complex treatments, etc.) and bring an opportunity to further generalize the rules with extra terms from this ontology that can be added into the rules. This allows for inducing a rule that self-defines the semantically coherent joint groups of genes and samples; the genes tend to be upregulated in the sample group. The induction is fully automated and driven by the context provided in the measurements and annotation ontologies. In other words, GSEA uses a 1-dimensional space of genes to induce a list of significantly enriched annotation terms. In this work, we expand onto 2-dimensional expression space and consequently allow for generation of hypotheses that represent a set of genes upregulated in a specific set of samples/biological conditions. An example of the hypothesis could be the following rule:
 \begin{center}
 $\mathbbm{H}= \{$ \emph{KEGG\_WNT\_SIGNALING\_PATHWAY} $\wedge$ \emph{KEGG\_CELL\_CYCLE}  $\wedge$ \emph{WING\_VEIN\_SEGMENT} $\}$.
 \end{center}
 This hypothetical example shows the case where genes belonging to \emph{KEGG\_WNT\_SIGNALING} and \emph{KEGG\_CELL\_CYCLE} pathways are frequently upregulated in samples from \emph{WING\_VEIN\_SEGMENT}, which makes a specific body part of Drosophila melanogaster. 
 
-We use rule learning to construct the above-outlined hypotheses. Rule learning refers to a class of supervised machine learning methods that induce a set of classification rules from a given set of training examples \cite{kotsiantis2007supervised}. For a binary task, training examples are assigned to two disjoint sets of positive and negative examples. The rule is an if-then statement where the antecedent is in the form of a conjunction of positive or negative logical terms, and the consequent is a class label. The final decision regarding an unseen example is provided by a set of rules or their ordered list. The rules are widely used in the fields of medicine and biology for their easy and clear interpretation \cite{hvidsten2003learning,calzone2006machine,bellazzi2008predictive} contrary to neural networks, for instance. 
+\subsection*{Rule Learning with Ontological Background Knowledge}
+
+We use rule learning \cite{fuerkranz2012rules,kotsiantis2007supervised} to construct the above-outlined hypotheses. Rule learning refers to a class of supervised machine learning methods that induce a set of classification rules from a given set of training examples. For a binary task, training examples are assigned to two disjoint sets of positive and negative examples. The rule is an if-then statement where the antecedent is in the form of a conjunction of positive or negative logical terms, and the consequent is a class label. The final decision regarding an unseen example is provided by a set of rules or their ordered list. The rules are widely used in the fields of medicine and biology for their easy and clear interpretation \cite{hvidsten2003learning,calzone2006machine,bellazzi2008predictive} contrary to neural networks, for instance. 
 
 As previously mentioned, one of the things that can help scientists interpret their data in a more natural way is background knowledge.
 Bioinformatics frequently deals with Gene Ontology  \cite{ashburner2000gene,gene2016expansion} and there are other types of structured databases, such as KEGG \cite{kanehisa2016kegg,kanehisa2015kegg,kanehisa2000kegg}, which can also be interpreted as an ontology or a taxonomy. Medicine employs Disease Ontology \cite{schriml2011disease,kibbe2014disease} or SNOMED-CT, natural language processing makes use of WordNet \cite{miller1995wordnet} or YAGO \cite{suchanek2007yago}, dedicated ontologies are often encountered in industry too.  
@@ -294,127 +298,52 @@ In our work, these two concepts, rule learning and ontologies or taxonomies, are
 
 The main motivation for this paper was our work published in \cite{klema2017semantic}, in which we introduced a technique called \emph{semantic biclustering}. This type of biclustering infers a human easily readable form of hypothesis describing only a single target class (also known as the target concept). This technique is applied to a gene expression data where highly expressed genes in corresponding samples are considered as the target class. One of the proposed methods solves the problem of semantic biclustering by linearizing a two-dimensional binary data matrix and a set of ontologies to an attribute-value representation that can be figured out using one of the well-known rule learning algorithms such as CN2 \cite{clark1989cn2,clark1991rule}, RIPPER \cite{cohen1995fast}, or PRIM \cite{friedman1999bump}. However, current ontologies, such as Gene Ontology, contain tens of thousands of hierarchically ordered terms. As a result, building a classification model without a preprocessing step is time and memory consuming. For this reason, we introduce a new refinement operator for a rule learning algorithm that examines properties between given data, ontologies, and its mutual relations to speed-up and improve the process of learning.
 
-One of the related subfields of machine learning that can handle a large amount of prior knowledge (i.e. ontology or taxonomy) is Inductive Logic Programming (ILP) where a key challenge is to prune a search space. This is caused by the fact that hypotheses are formulated in first-order logic and ILP algorithms have to search over a large hypothesis space. For its ability to work with this form of prior knowledge, we were inspired by this subfield. In \cite{vzakova2007exploiting}, the authors proposed a refinement operator to construct conjunctive relational features that use taxonomies to speed-up the process of propositionalization. This algorithm uses taxonomies to exclude conjunction from the exploration process if the conjunction contains a feature together with any of its subsumees. In \cite{svatovs2017pruning}, the authors find and prune such hypotheses that are equivalent to a previously considered hypothesis. To test such equivalency in given domain theory, they proposed a saturation method for a first-order logic clause with the property that two clauses are equivalent whenever their saturations are isomorphic. However, ILP can build a highly complex hypothesis whose interpretation can prove difficult, especially in a biological domain where validation of such a hypothesis can hardly be feasible. For this reason, we decided to focus on the easily interpretable hypotheses produced by rule learning algorithms.
+One of the related subfields of machine learning that can exploit formalized prior knowledge such as ontologies or taxonomies is Inductive Logic Programming (ILP) \cite{deraedt2016srl} where a key challenge is to prune the search space of (first-order logic) rules. For its ability to work with this form of prior knowledge, we were inspired by this subfield. In \cite{vzakova2007exploiting}, the authors proposed a refinement operator to construct conjunctive relational features. This algorithm uses taxonomies to exclude conjunction from the exploration process if the conjunction contains a feature together with any of its subsumees. In \cite{svatovs2017pruning}, the authors find and prune such hypotheses that are equivalent to a previously considered hypothesis. To test such equivalency in given domain theory, they proposed a saturation method for a first-order logic clause with the property that two clauses are equivalent whenever their saturations are isomorphic. 
 
-In this work, we propose a new rule learning algorithm that builds classifiers, as is usual for rule learning, from given positive and negative examples. To build such a classifier, we were inspired by the well-known CN2 algorithm that is based on the Beam search heuristic \cite{clark1989cn2}. A refinement operator of CN2, that is used for a rule space exploration, extends the current rule by trial adding all features from a set of features to the antecedent of the rule. For example, with a set of four features $\{t1, t2, t3, t4\}$, the current rule $t1 \wedge t2 \rightarrow yes$ (all the examples with positive values of features $t1$ and $t2$ belong to the positive class) could be extended to two rules $t1 \wedge t2 \wedge t3 \rightarrow yes$ and $t1 \wedge t2 \wedge t4 \rightarrow yes$\footnote{As we deal with the binary class we will skip the right hand side of the rules in the rest of text and implicitly assume that all the rules target the positive class.}. In particular, we introduce a new refinement operator that, due to ontologies, significantly reduces a search space of rules and consequently reduces run time of rule learner in comparison to the traditional refinement operator without a loss of accuracy. In our example, if knowing that $t4$ is more general than $t1$, the second rule extension can be rejected for redundancy without testing. The proposed ontology-based refinement operator uses two reduction procedures: a \emph{Redundant Generalization} that omits candidate rules based on a relation generalization-specialization and a \emph{Redundant Non-potential} that omits the candidate rules which cannot improve classification accuracy. We demonstrate effectiveness and efficiency of our algorithm on three real gene expression datasets: \emph{Dresden ovary table} (DOT) \cite{jambor2015systematic,dot}, \emph{Drosophila imaginal discs} (DISC) \cite{borovec2016binary}, and dataset of \emph{Strand-specific RNA-seq of nine mouse tissues} (m2801) \cite{merkin2012evolutionary}.
+However, the highly expressive first-order logic setting of ILP is traded off by high computational demands and high complexity of resulting patterns. The latter presents a challenge when interpreting and validating the outputs. For the analysis task addressed here, the expressiveness and complexity of ILP is unnecessary. We thus seek to design an efficient rule-refinement operator in the simpler setting of IF-THEN rules corresponding to propositional-logic formulas.
 
+\subsection*{Propositional Rule Learning}
+We base our approach on the classical rule learning algorithm CN2 \cite{clark1989cn2}. The input to CN2 is an attribute-value description of a set of samples along with the class labels of the samples, i.e. the {\em training set}. The output is a set of rules predicting class labels from the attribute values. Each rule has the form
+\begin{equation}\label{eq:cn2rule}
+	a_1 = v_1 \wedge a_2=v_2 \wedge  \ldots  \rightarrow {class}
+\end{equation}
+where $a_i$ denote attributes as defined in the sample set, $v_i$ are values assumed for the prediciton, and ${class}$ is the predicted class. For each ${class}$, the algorithm first considers an empty set of conditions on the left-hand side. Such a rule will trivially predict ${class}$ for all samples, which will typically be incorrect. The set of conditions thus needs to be iteratively extended until the rule has sufficient quality, i.e., it avoids enough out-of-class samples while retaining the class prediction for sufficiently many in-class samples. The addition of a condition into a rule is called rule refinement. An applied refinement may turn out unsuitable in that even with additional refinements, a high-quality rule is not found. Thus the algorithm can backtrack  and search an alternative refinement. The exact succession of these operations is prescribed by the Beam search heuristic \cite{russelNorvig2003:aima}. When a rule is accepted and the training set still contains ${class}$ samples not predicted by it, a new rule is searched. The loop terminates when each positive sample is predicted positive by at least one of the accepted rules.
 
 \section*{Methods}
-\subsection*{Problem definition}\label{section:problemdef}
-To start with, we formally define two basic concepts: ontology and example as inputs of the proposed algorithm. 
+We aim to learn rules similar in form to (\ref{eq:cn2rule}), except each condition on the left-hand side will correspond to an assumed ontological term. Thus the logical conjunction will simply correspond to a set of terms. We will work in the binary classification setting involving exactly two classes, positive and negative. Rules will be searched only for the positive class, as any sample not classified as positive is deemed negative by default. Thus the ${class}$ symbol in all rules will indicate the positive class, and we can drop the right-hand side of rules. Therefore, a rule in our context is simply a set of terms.
 
-Firstly, assume ontologies as a partial-ordered set $<T,\succeq>$, where $T$ represents a set of all terms that are presented in the given ontologies and $\succeq$ is a binary relation defined in $T$ such that  $(g, s) \in \succeq \subseteq T \times T$. In other words, term $g$ is $\succeq$-related to term $s$. For example, in the context of Gene ontology \cite{ashburner2000gene,gene2016expansion}, we can say that the term \emph{developmental process} is a subtype of term \emph{biological process}, written as (\emph{biological process}, \emph{developmental process}) $\in \succeq$. According to partial-order set definition, the $\succeq$ relation is reflexive, transitive, and antisymmetric. Consequently, ontologies cannot contain any cycles. For a better understanding, we define the following concepts that will be used in this paper later. 
+Our goal is to is to find a set of rules which fit well a supplied training set as described above in the context of the CN2 algorithm. To this end, we introduce a special refinement operator that, due to the taxonomic nature of the assumed conditions, significantly reduces the search space of rules and consequently reduces run times of the rule learner in comparison to the traditional refinement operator without a loss of accuracy. For example, if term $t1$ is in the rule and the ontology prescribes that $t2$ is more general than $t1$ then adding $t2$ to the rule is obviously useless. We can thus safely prune from the search space all rules combining $t1$ and $t2$.
 
-\begin{definition}
-Let $x,y \in T$, $x$ is called a \emph{generalization} of $y$ (or $x$ is more general than $y$) iff $x \succeq y$.
-\end{definition}
+Technically, the proposed ontology-based refinement operator uses two reduction procedures: a \emph{Redundant Generalization} that omits candidate rules based on a relation generalization-specialization and a \emph{Redundant Non-potential} that omits the candidate rules which cannot improve classification accuracy.
 
-\begin{definition}
- Let $x,y \in T$, $y$ is called a \emph{specialization} of $x$ (or $y$ is more specific than $x$) iff $x \succeq y$.
-\end{definition}
+% We demonstrate effectiveness and efficiency of our algorithm on three real gene expression datasets: \emph{Dresden ovary table} (DOT) \cite{jambor2015systematic,dot}, \emph{Drosophila imaginal discs} (DISC) \cite{borovec2016binary}, and dataset of \emph{Strand-specific RNA-seq of nine mouse tissues} (m2801) \cite{merkin2012evolutionary}.
+\subsection*{Problem formalization}\label{section:problemdef}
+To describe our rule-learning algorithm in detail, we first define a few formal concepts. We are given
+\begin{itemize}
+	\item Two sets $E^+, E^-$ of positive and negative (respectively) samples.
+	\item A set $T$ of ontological terms with a partial order $\succeq$ which encodes the ``more general than" relation. For example, with $t1 = \emph{biological process}$ and $t2 = \emph{developmental process}$, we have $t1 \succeq t2$.
+	\item An annotation function $M$ which maps each sample to a subset of $T$, i.e. $M: E^+ \cup E^- \rightarrow 2^T$.
+\end{itemize}
 
-Given these two definitions, we are able to express basic elements defined over ontologies. As an example, we can define all top elements in ontologies. In the context of ontology, top elements correspond to roots, i.e. the terms that do not have any ancestors/more general terms.
+From $M$, we can derive a reverse mapping $M': T \rightarrow 2^E$ producing the set of examples annotated with a given term, i.e. $M'(t) = \{e \in E : t \subseteq M(e)\}$. It is also useful to define the transitive closure $S(t)$ of $M'(t)$ as the set of all samples annotated by $t$ or any term less general than $t$, i.e.
+\begin{equation}
+	S(t) = \bigcup_{t' \in T, t \succeq t'} M(t') 
+\end{equation}
+
+If $t$ is the only term in a rule, then $S(t)$ is the set of all samples for which the rule predicts the positive class. $S(t)$ is also called the {\em cover} of the rule. More generally, for a rule conjoining an arbitrary set $R \subseteq T$ of terms, we define the {\em cover function} as
+\begin{equation}
+	\Theta(R) = \bigcap_{t \in R} S(t)
+\end{equation}
+Finally, we define a generality relation $\succeq_r$ on rules. Let $R1, R2 \subseteq T$, then $R1 \succeq_r R2$ if and only if $\Theta(R1) \supseteq \Theta(R2)$.
 
 
 \begin{example}\label{ex:onto}
-    Let ontology $O = <T,\succeq^{*}>$ be a partial-ordered set that is shown in Fig~\ref{figure:onto1} where $T=\{t0,t1,t2,t3,t4,t5,t6\}$, $\succeq=\{(t0,t1), (t0,t2), (t0,t3), (t1,t4), (t2,t4),$ $(t2,t5), (t3,t5), (t3,t6)\}$, and $\succeq^{*}$ is a reflexive transitive closure of the relation $\succeq$. Then $t0$ is more general than $t1,t2,t3,t4,t5$ and $t6$ and simultaneously $t0$ is a root since there is no other more general term of $t0$.
-    %Then $t1$ is an upward cover of $t4$; $t0$, $t2$, and $t3$ are upper bounds of $\{t5,t6\}$ and $t3$ is the least upper bound of $\{t5,t6\}$.
-\end{example}
-
-%fig1
-
-Secondly, every ontology refers to a certain set of ground level objects. In this work we will call them examples. In the case of gene ontology, the examples could be the set of measured genes, in the case of location ontology it can be the set of body parts from which the measurements come. We define a set of examples $E = E^{+} \cup E^{-}$ where $E^{+}$ represents a set of positive examples (e.g. a set of up-regulated genes or a gene set of interest) and $E^{-}$ represents a set of negative examples (e.g. a set of down-regulated genes or a control gene set). 
-Finally, we define an association between examples and ontology terms and vice versa. These associations are essential for the novel refinement operator and for the two reduction procedures. 
-
-
-Since each example is annotated by a subset of terms from an ontology, we assume a mapping
-\begin{eqnarray}
-\label{eq:mapM}
-	 M :  E \rightarrow \mathcal{P}(T)
-\end{eqnarray}
-
-that maps examples from the set of examples $E$ to elements of the power set of terms $T$ from a given ontology. To illustrate, an example is represented by the Drosophila's gene \emph{Phosphoenolpyruvate carboxykinase} that is annotated by the following Gene ontology terms: \emph{GTP binding}, \emph{phosphoenolpyruvate carboxykinase activity}, \emph{gluconeogenesis}, and \emph{mitochondrion}. In most cases, this mapping function $M$ is defined manually by a user based on their expert knowledge, or automatically by well-known tools that help map a text associated with an example to an ontology as \cite{zooma}.
-
-
-On the other hand, there are associations from terms to examples. For this, we define a reverse mapping
-\begin{eqnarray}
-\label{eq:mapMr}
-	 M' : T \rightarrow \mathcal{P}(E)
-\end{eqnarray}
-
-that maps elements from the set of terms $T$ to elements of the power set of examples $E$. The formal definition of this function follows: 
-
-\begin{eqnarray}
-\label{eq:mapMline}
-	 M' (t \in T) = \{\forall e \in E : t \subseteq M(e)\}.
-\end{eqnarray}
-
-\begin{example} \label{ex:2}
-    Suppose the ontology as a partial-order set that is defined in Example \ref{ex:onto}. Let $E = \{e_1, e_2, e_3\}$ be a set of examples, and the mapping $M$, that assigns terms from the ontology $O$ to the specific example, is defined manually in the following way: $M(e_1) = \{t4\}, M(e_2) = \{t5, t6\}, M(e_3) = \{t2\}$.
-    The mapping $M'$ that reversely assigns set of examples to the specific term from the ontology $O$ is following: $M'(t0) = \{\emptyset\}, M'(t1) = \{\emptyset\}, M'(t2) = \{e_3\}, M'(t3) = \{\emptyset\}, M'(t4) = \{e_1\}, M'(t5) = \{e_2\}, M'(t6) = \{e_2\}$.
-\end{example}
-
-Since the associations between examples and terms have been defined, we may propagate these associations to the more general terms. It holds that if an example associates with a term then by default it associates with all generalizations of this term as well. The propagation is shown in Fig \ref{figure:onto2} and it is concurrently defined in Eq \ref{eq:mapS}. The process of spreading information in ontologies is represented by a mapping $S$ where for each term we firstly find a corresponding set of all its specializations, and then we unite all examples associated with them.
-
-%fig2
-
- $$S :  T \rightarrow \mathcal{P}(E)$$
-\begin{eqnarray}
-\label{eq:mapS}
-	 S(t_{r} \in T) = \bigcup\limits_{t \in \{\forall x \in T: x \textup{ \footnotesize is specialization of } t_{r}\}}^{} M'(t)
-\end{eqnarray}
-
-\begin{example}\label{ex:3}
-    Consider the ontology $O$ from Example \ref{ex:onto}, $M$ and $M'$ from Example \ref{ex:2}. We apply $S$ to each term in $O$, i.e.
-    $$S(t4) = M'(t4) = \{e1\}$$
-    $$S(t5) = M'(t5) = \{e2\}$$
-    $$S(t6) = M'(t6) = \{e2\}$$
-    $$S(t1) = M'(t1) \cup M'(t4) = \{e1\}$$
-    $$S(t2) = M'(t2) \cup M'(t4) \cup M'(t5) = \{e1, e2, e3\}$$
-    $$S(t3) = M'(t3) \cup M'(t5) \cup M'(t6) = \{e2\}$$
-    $$S(t0) = M'(t0) \cup M'(t1) \cup \cdots \cup M'(t6) = \{e1, e2, e3\}$$
-    
-\end{example}
-The result of this operation is shown in Fig \ref{figure:onto2}. In this example, the most general term $t0$ named as \emph{biological process} is associated with all examples in $E$, i.e. $e1$, $e2$, and $e3$. Intuitively, this is an expected result since other terms (\emph{cellular process}, \emph{single-organism process}, \emph{developmental process}, \emph{single-organism cellular process}, \emph{single-organism developmental process}, and \emph{anatomical structure development}) are also a \emph{biological process} thanks to the $\succeq^{*}$-relation. In other words, the most general term is associated with all examples that are associated with all specializations of that term.
-
-
-Before we introduce a rule space and a corresponding form of rules, we formulate a cover operator $\Theta$. The cover operator determines which examples satisfy a rule condition, and we say that the rule covers such examples. Formally, $\Theta$ is a mapping from a power set of terms $T$ to a power set of examples $E$, i.e.
-
-\begin{eqnarray}
-\label{eq:thetamap}
-	 \Theta : \mathcal{P}(T) \rightarrow \mathcal{P}(E)
-\end{eqnarray}
- %$$\Theta : \mathcal{P}(T) \rightarrow \mathcal{P}(E)$$
- and is defined in the following form:
-\begin{eqnarray} \label{eq:cover}
-    \Theta (T_{r} \subseteq T) = \bigcap\limits_{t \in T_{r}} S(t) .
-\end{eqnarray}
- 
-
-The cover operator $\Theta$ takes a set of terms and returns all the examples concurrently annotated by all the terms from this set. The cover is applied after the annotation propagation step mentioned above.
-
-
-Rule space $\mathcal{R} = <R, \succeq_{r}>$ is defined as a quasi-ordered set where $R$ represents a set of rules and a binary relation $\succeq_{r}$ such that $\succeq_{r} \subseteq R \times R$ is reflexive and transitive. Further, the rule syntax is restricted on a conjunction of positive terms. For the sake of simplicity, we omit a propositional logic notation of rules and represent the conjunction of positive terms as a set of terms, i.e. propositional logic notation of rule $t1 \wedge t3 \wedge t4$ is represented as $\{t1,t3,t4\}$. Notice that conjunctive interpretation corresponds to the definition of cover operator as well.
- 
-\begin{example} \label{ex:4}
-    Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, and mapping $S$ from Example \ref{ex:3}. Let rules be $R1=\{t1, t2\}$, $R2=\{t2\}$, and $R3=\{t0\}$. Then $R1$ covers $\Theta(R1) = S(t1) \cap S(t2) = \{e1\} \cap \{e1, e2, e3\} = \{e1\}$. We say that example $e1$ is covered by rule $R1$. Equivalently, $R2$ covers examples $e1, e2, e3$ and $R3$ covers the same set of examples as $R2$.
-\end{example}
- 
- 
- The binary relation $\succeq_{r}$ is defined in the set of rules $R$ as follows:
- 
-\begin{eqnarray} \label{eq:forder}
-    R_{f}1 \succeq_{r}  R_{f}2 \iff  \Theta(R_{f}2) \subseteq \Theta(R_{f}1)
-\end{eqnarray}
-where  $R_{f}1, R_{f}2 \in R$.
-
-\begin{example} \label{ex:5}
-Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, mapping $S$ from Example \ref{ex:3}, and rules from Example \ref{ex:4}. Then the relations between rules are as follows: $R2 \succeq_{r} R1$, $R3 \succeq_{r} R1$, $R3 \succeq_{r} R2$ and $R2 \succeq_{r} R3$. 
+	Consider 3 hypothetical samples and 7 actual ontology terms as shown in Fig \ref{figure:onto2}. The term generality relation $\succeq$ corresponds to the direction of edges from more to less general. Here we have $M(e_1) = \{t4\}, M(e_2) = \{t5, t6\}, M(e_3) = \{t2\}$. $M'(t)$ is shown above each $t$ box. Finally, $S(t)=M'(t)$ for $t \in \{t4,t5,t6\}$ but e.g. $S(t1) = M'(t1) \cup M'(t4) = \{e1\}$.
 \end{example}
 
 \subsection*{Proposed algorithm} \label{section:proposedalg}
 
-The algorithm proposed in this work induces a hypothesis from data in the form of a set of rules (conjunctions). To induce a hypothesis consisting of more rules we apply a covering algorithm that has its origin in the AQ family of algorithms \cite{michalski1969quasi} and it is also used in CN2. The covering algorithm consists of two steps: (1) induce a single rule from the current set of examples, (2) exclude the examples that are covered by this single rule from the current set of examples; these two steps are iteratively applied starting with the the set of all examples until all positive examples are covered or a certain number of induced rules is reached. This process is described in Algorithm \ref{algo_sem1r} and that algorithm we refer to as \emph{sem1R}. As an input, the following data are required: a set of positive $E^{+}$ and negative $E^{-}$ examples, a set of ontologies $\mathcal{O}$, and a maximal size of the set of induced rules $k$. An output is a set of induced rules. An \emph{induceSingleRule} function returns the best rule based on selected evaluation function. The function \emph{induceSingleRule} is described in Algorithm \ref{algo_newrefinement}, all evaluation functions can be found in the Evaluation Criteria section.
+The algorithm proposed in this work induces a hypothesis from data in the form of a set of rules. To induce a hypothesis consisting of more rules we apply a covering algorithm that has its origin in the AQ family of algorithms \cite{michalski1969quasi} and it is also used in CN2. The covering algorithm consists of two steps: (1) induce a single rule from the current set of examples, (2) exclude the examples that are covered by this single rule from the current set of examples; these two steps are iteratively applied starting with the the set of all examples until all positive examples are covered or a certain number of induced rules is reached. This process is described in Algorithm \ref{algo_sem1r} and that algorithm we refer to as \emph{sem1R}. As an input, the following data are required: a set of positive $E^{+}$ and negative $E^{-}$ examples, a set of ontologies $\mathcal{O}$, and a maximal size of the set of induced rules $k$. An output is a set of induced rules. An \emph{induceSingleRule} function returns the best rule based on selected evaluation function. The function \emph{induceSingleRule} is described in Algorithm \ref{algo_newrefinement}, all evaluation functions can be found in the Evaluation Criteria section.
 
 Contrary to CN2, the \emph{sem1R} algorithm has the relations over terms that are explicitly specified in provided ontologies. Intuitively, if this kind of knowledge were exploited then we would expect some benefits during the process of inducing rules because the structure of terms is known. In this case, the main benefit is speeding up the process of inducing rules and removing obvious redundancy between the terms in rules. This was the main motivation for the following reduction procedures.
 
@@ -456,7 +385,7 @@ and the rule $R1$ is called a \textit{redundant generalization} of $\overline{R1
 
 For simplicity, we take into consideration only rules with cardinality 1. Given this, mapping $S$ can be seen as a cover operator $\Theta$ because it only makes an intersection over all sets of examples according to $S$. Also, a rule of cardinality 1 will be denoted as a term because we do not want to distinguish the relations over the set of terms and the set of rules. In this case, the $\succeq$ relation over terms is equivalent to $\succeq_{r}$ relation over rules. This simplification does not lose generality.
 
-In Eq \ref{eq:mapS}, we use the mapping $S$ that finds all specializations for a term and afterwards, using mapping M', it unites all the examples assigned to these specializations into one set. This is done for each term in an ontology. Apparently, terms that are more specific cannot be associated with a higher number of examples than their more general counterparts. Concurrently, examples associated with a more specific term make a subset of examples associated with a more general term, written as $t1 \succeq t2 \Rightarrow S(t2) \subseteq S(t1)$ where $t1,t2 \in T$.
+A term cannot be associated with a higher number of examples than its more general counterpart. Concurrently, examples associated with a more specific term make a subset of examples associated with a more general term, written as $t1 \succeq t2 \Rightarrow S(t2) \subseteq S(t1)$ where $t1,t2 \in T$.
 Now, let rule $R1=\{t1,t2\}$ consist of two terms such that $t1 \succeq t2$ and rule $\overline{R1} = \{t2\}$ consists of only term $t2$. Then $R1$ covers an equal set of examples as $\overline{R1}$. This equality is proven below.
 
 $$ \Theta(R1) = \Theta(\overline{R1})$$
@@ -466,7 +395,7 @@ $$S(t2) = S(t2).$$
 \end{proof}
 
 \begin{example} \label{ex:6}
-Consider the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, and mapping $S$ from Example \ref{ex:3}. Let rule $R1=\{t0,t2\}$, term $t0$ is more general than $t2$ ($t0 \succeq t2$) and this rule covers examples $e1, e2, e3$ because $\Theta(R1) = \Theta(\{t0,t2\}) = S(t0) \cap S(t2) = \{e1, e2, e3\}$. Now, consider a rule $\overline{R1} = \{t2\}$ that also covers examples $e1,e2,e3$ since $\Theta(\overline{R1}) = S(t2) = \{e1, e2, e3\}$ and as we can see, term $t0$ occurring in the rule $R1$ does not influence a set of covered examples. Given this, rule $R1$ covers the same set of examples as rule $\overline{R1}$. For this reason, rule $R1$ is Redundant Generalization and rule $\overline{R1}$ is not Redundant Generalization.
+Consider the ontology $O$ and mappings $M,M',S$ from Example \ref{ex:onto}. Let rule $R1=\{t0,t2\}$, term $t0$ is more general than $t2$ ($t0 \succeq t2$) and this rule covers examples $e1, e2, e3$ because $\Theta(R1) = \Theta(\{t0,t2\}) = S(t0) \cap S(t2) = \{e1, e2, e3\}$. Now, consider a rule $\overline{R1} = \{t2\}$ that also covers examples $e1,e2,e3$ since $\Theta(\overline{R1}) = S(t2) = \{e1, e2, e3\}$ and as we can see, term $t0$ occurring in the rule $R1$ does not influence a set of covered examples. Given this, rule $R1$ covers the same set of examples as rule $\overline{R1}$. For this reason, rule $R1$ is Redundant Generalization and rule $\overline{R1}$ is not Redundant Generalization.
 \end{example}
 
 
@@ -495,7 +424,7 @@ To illustrate, consider an arbitrary rule $R1$ and its more specific rule $R2$ (
 
 
 \begin{example}\label{ex:non_pot}
-Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, mapping $S$ from Example \ref{ex:3}, and two rules $R1=\{t2\}$ and $R2=\{t3\}$. Further, we define a set of positive examples $E^{+}=\{e1, e3\}$ and a set of negative examples $E^{-}=\{e2\}$. Firstly, we evaluate the quality of the rules according to ACC measure (see Eq \ref{eq:eval_acc})
+Consider the ontology $O$ and mappings $M,M',S$ from Example \ref{ex:onto}, and two rules $R1=\{t2\}$ and $R2=\{t3\}$. Further, we define a set of positive examples $E^{+}=\{e1, e3\}$ and a set of negative examples $E^{-}=\{e2\}$. Firstly, we evaluate the quality of the rules according to ACC measure (see Eq \ref{eq:eval_acc})
 \begin{eqnarray}
 \label{eq:exampleacc}
 	{\small Q_{ACC}(R1) = \frac{TP + TN}{TP + TN + FP + FN} = \frac{2 + 0}{2 + 0 + 1 + 0} = \frac{2}{3}} \\
@@ -536,7 +465,7 @@ Corresponding accuracy (ACC) of an arbitrary rule $R$ can be computed by the wid
 \begin{eqnarray} \label{eq:eval_acc}
 Q_{ACC}(R) = \frac{TP + TN}{TP + TN + FP + FN}.
 \end{eqnarray}
-However, the potentially highest accuracy of rule refined from $R$ is computed differently. In Eq \ref{eq:eval_acc}, we see that the eventual accuracy is given by the numerator (TP and TN) whereas the denominator has the normalization function. Since we assume Eq \ref{eq:cover}, the refinement may improve the rule quality in such a way that the examples that are classified as FP will be re-classified to TN, i.e. the numerator of $Q_{p\_ACC}$ may at best be given by the sum of TN,TP, and FP. The equation for the potentially highest quality reached through refinement follows:
+However, the potentially highest accuracy of rule refined from $R$ is computed differently. In Eq \ref{eq:eval_acc}, we see that the eventual accuracy is given by the numerator (TP and TN) whereas the denominator has the normalization function. The refinement may improve the rule quality in such a way that the examples that are classified as FP will be re-classified to TN, i.e. the numerator of $Q_{p\_ACC}$ may at best be given by the sum of TN,TP, and FP. The equation for the potentially highest quality reached through refinement follows:
 \begin{eqnarray} \label{eq:eval_pot_acc}
 Q_{p\_ACC}(R) = \frac{TP + TN + FP}{TP + TN + FP + FN}
 \end{eqnarray}
@@ -553,7 +482,7 @@ where all negative examples covered by rule $R$ (FP) are excluded from the denom
 
 
 \begin{example}
-Suppose the ontology $O$ from Example \ref{ex:onto}, mapping $M$ and $M'$ from Example \ref{ex:2}, mapping $S$ from Example \ref{ex:3}, and a set of positive ($E^{+}$) and negative ($E^{-}$) examples from Example \ref{ex:non_pot}. Further, we define a rule $R=\{t2\}$. First of all, we find examples that are covered by the rule using $\Theta$ operator, i.e. $\Theta(\{t2\}) = S(t2) = \{e1, e2, e3\}$. Secondly, we compute TP, FP, FN and TN:
+Consider the ontology $O$ and mappings $M,M',S$ from Example \ref{ex:onto}, and a set of positive ($E^{+}$) and negative ($E^{-}$) examples from Example \ref{ex:non_pot}. Further, we define a rule $R=\{t2\}$. First of all, we find examples that are covered by the rule using $\Theta$ operator, i.e. $\Theta(\{t2\}) = S(t2) = \{e1, e2, e3\}$. Secondly, we compute TP, FP, FN and TN:
 $$TP = |\Theta(r) \cap E^{+}| = |\{e1, e2, e3\} \cap \{e1, e3\}| = 2$$
 $$FP = |\Theta(r) \cap E^{-}| = |\{e1, e2, e3\} \cap \{e2\}| = 1$$
 $$TN = |E^{-} \backslash \Theta(r)| = |\{e2\} \cap \{e1, e2, e3\}| = 0$$

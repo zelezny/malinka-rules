@@ -1,0 +1,71 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: bmc_article.aux
+The style file: bmc-mathphys.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bmc_article.bib
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--to sort, need author or key in dot
+Warning--to sort, need author or key in zooma
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 39 entries,
+            7128 wiz_defined-function locations,
+            1345 strings with 16853 characters,
+and the built_in function-call counts, 572911 in all, are:
+= -- 97466
+> -- 1511
+< -- 863
++ -- 54073
+- -- 423
+* -- 22226
+:= -- 102770
+add.period$ -- 44
+call.type$ -- 39
+change.case$ -- 437
+chr.to.int$ -- 1800
+cite$ -- 43
+duplicate$ -- 4119
+empty$ -- 13580
+format.name$ -- 1621
+if$ -- 142146
+int.to.chr$ -- 1
+int.to.str$ -- 104
+missing$ -- 1417
+newline$ -- 1223
+num.names$ -- 185
+pop$ -- 1702
+preamble$ -- 1
+purify$ -- 178
+quote$ -- 78
+skip$ -- 57006
+stack$ -- 0
+substring$ -- 60881
+swap$ -- 1406
+text.length$ -- 631
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1685
+warning$ -- 2
+while$ -- 1498
+width$ -- 0
+write$ -- 1752
+(There were 2 warnings)
